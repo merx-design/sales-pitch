@@ -9,11 +9,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Hanken+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="styles/veren.css" />
 <style>
-
-  /* ---- Hero ---- */
   .home-hero{
-    padding: clamp(40px, 6vw, 96px) 0 0;
-    border-bottom: 1px solid var(--rule);
+    padding: clamp(56px, 8vw, 112px) 0 clamp(44px, 6vw, 76px);
   }
   .home-hero__eyebrow{
     font-family: var(--mono);
@@ -21,8 +18,7 @@
     letter-spacing: .10em;
     text-transform: uppercase;
     color: var(--ink-mute);
-    padding-bottom: clamp(18px, 2.5vw, 30px);
-    border-bottom: 1px solid var(--rule);
+    margin-bottom: clamp(24px, 3vw, 40px);
     display: flex;
     align-items: center;
     gap: 18px;
@@ -33,226 +29,46 @@
     background: var(--rust);
     animation: pulse 2.8s ease-in-out infinite;
   }
-  .home-hero__split{
-    display: grid;
-    grid-template-columns: 1.25fr 1fr;
-    gap: 0;
-    align-items: start;
-  }
-  .home-hero__left{
-    padding: clamp(36px, 5vw, 72px) clamp(36px, 4.5vw, 64px) clamp(48px, 7vw, 96px) 0;
-    border-right: 1px solid var(--rule);
-  }
-  .home-hero__right{
-    padding: clamp(36px, 5vw, 72px) 0 clamp(48px, 7vw, 96px) clamp(36px, 4.5vw, 64px);
-  }
   .home-hero__title{
     font-family: var(--serif);
     font-weight: 400;
-    font-size: clamp(44px, 7.5vw, 116px);
+    font-size: clamp(52px, 9.5vw, 144px);
     line-height: .88;
     letter-spacing: -.025em;
-    margin: 0 0 clamp(22px, 3vw, 40px);
+    margin: 0 0 clamp(20px, 2.5vw, 36px);
     color: var(--ink);
-    max-width: 16ch;
+    max-width: 20ch;
   }
   .home-hero__title em{ font-style: italic; color: var(--rust); }
   .home-hero__sub{
     font-family: var(--serif);
     font-style: italic;
     font-size: clamp(18px, 1.9vw, 24px);
-    line-height: 1.4;
+    line-height: 1.42;
     color: var(--ink-soft);
     margin: 0;
-    max-width: 38ch;
-  }
-  .home-hero__sub strong{
-    font-style: normal;
-    color: var(--ink);
-    font-family: var(--sans);
-    font-size: .78em;
-    font-weight: 600;
-  }
-  .home-hero__proof{
-    border: 1px solid var(--rule);
-    margin-bottom: 28px;
-  }
-  .home-hero__proof-item{
-    padding: 20px 24px;
-    border-bottom: 1px solid var(--rule);
-  }
-  .home-hero__proof-item:last-child{ border-bottom: 0; }
-  .home-hero__proof-num{
-    font-family: var(--serif);
-    font-style: italic;
-    font-size: clamp(26px, 2.8vw, 42px);
-    color: var(--rust);
-    line-height: .96;
-    margin-bottom: 6px;
-  }
-  .home-hero__proof-label{
-    font-family: var(--mono);
-    font-size: 11px;
-    letter-spacing: .10em;
-    text-transform: uppercase;
-    color: var(--ink-mute);
-  }
-  .home-hero__routing{
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-  .home-hero__routing-label{
-    font-family: var(--mono);
-    font-size: 12px;
-    letter-spacing: .10em;
-    text-transform: uppercase;
-    color: var(--ink-mute);
-    margin-bottom: 4px;
+    max-width: 52ch;
   }
 
-  /* ---- Marquee band ---- */
-  .band{
-    border-bottom: 1px solid var(--rule);
-    overflow: hidden;
-    padding: 14px 0;
-    background: var(--ink);
-  }
-  .band__inner{
-    display: flex;
-    gap: 0;
-    white-space: nowrap;
-    animation: marquee 22s linear infinite;
-  }
-  .band__item{
-    flex-shrink: 0;
-    display: inline-flex;
-    align-items: center;
-    gap: 28px;
-    padding: 0 32px;
-    font-family: var(--mono);
-    font-size: 12px;
-    letter-spacing: .14em;
-    text-transform: uppercase;
-    color: rgba(239,231,212,.65);
-  }
-  .band__item .dot{ color: var(--rust); }
-  @keyframes marquee{ from{ transform: translateX(0); } to{ transform: translateX(-50%); } }
-
-  /* ---- Proof numbers ---- */
-  .proof{
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1px;
-    background: var(--rule);
-    border-top: 1px solid var(--rule);
-    border-bottom: 1px solid var(--rule);
-  }
-  .proof__cell{
-    background: var(--paper);
-    padding: 40px 36px 36px;
-  }
-  .proof__label{
-    font-family: var(--mono);
-    font-size: 12px;
-    letter-spacing: .10em;
-    text-transform: uppercase;
-    color: var(--ink-mute);
-    margin-bottom: 16px;
-  }
-  .proof__num{
-    font-family: var(--serif);
-    font-size: clamp(42px, 5.5vw, 80px);
-    line-height: .9;
-    letter-spacing: -.02em;
-    color: var(--ink);
-  }
-  .proof__num em{ color: var(--rust); font-style: italic; }
-  .proof__note{
-    margin-top: 20px;
-    font-size: 16px;
-    line-height: 1.6;
-    color: var(--ink-soft);
-    max-width: 34ch;
-  }
-
-  /* ---- How we work (three pillars) ---- */
-  .pillars{
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 0;
-    border: 1px solid var(--rule);
-    margin-top: 24px;
-  }
-  .pillar{
-    padding: 32px 30px 36px;
-    border-right: 1px solid var(--rule);
-  }
-  .pillar:last-child{ border-right: 0; }
-  .pillar__no{
-    font-family: var(--mono);
-    font-size: 12px;
-    letter-spacing: .10em;
-    text-transform: uppercase;
-    color: var(--rust);
-    margin-bottom: 14px;
-  }
-  .pillar h3{
-    font-family: var(--serif);
-    font-style: italic;
-    font-weight: 400;
-    font-size: clamp(26px, 2.8vw, 38px);
-    line-height: 1.06;
-    margin: 0 0 14px;
-  }
-  .pillar p{
-    font-size: 16.5px;
-    line-height: 1.65;
-    color: var(--ink-soft);
-    margin: 0;
-    max-width: 40ch;
-  }
-
-  /* ---- Two paths routing block ---- */
-  .route{
+  /* Two routing cards */
+  .routes{
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 0;
-    border: 1px solid var(--rule);
-    margin-top: 24px;
+    border-top: 1px solid var(--rule);
   }
-  .route__cell{
-    padding: 40px 36px 44px;
+  .route-card{
+    padding: clamp(44px, 6.5vw, 88px) clamp(32px, 4.5vw, 64px) clamp(56px, 8vw, 108px);
     border-right: 1px solid var(--rule);
+    text-decoration: none;
+    color: var(--ink);
+    display: block;
     position: relative;
+    transition: background .3s ease;
   }
-  .route__cell:last-child{ border-right: 0; }
-  .route__tag{
-    font-family: var(--mono);
-    font-size: 12px;
-    letter-spacing: .10em;
-    text-transform: uppercase;
-    color: var(--ink-mute);
-    margin-bottom: 14px;
-  }
-  .route__tag .num{ color: var(--rust); margin-right: 8px; }
-  .route__title{
-    font-family: var(--serif);
-    font-style: italic;
-    font-weight: 400;
-    font-size: clamp(32px, 3.6vw, 52px);
-    line-height: 1.04;
-    margin: 0 0 18px;
-    max-width: 18ch;
-  }
-  .route__body{
-    font-size: 17px;
-    color: var(--ink-soft);
-    line-height: 1.65;
-    max-width: 42ch;
-    margin-bottom: 28px;
-  }
-  .route__cell::before{
+  .route-card:last-child{ border-right: 0; }
+  .route-card:hover{ background: rgba(177,74,44,.03); }
+  .route-card::before{
     content: "";
     position: absolute;
     top: 0; left: 0; right: 0;
@@ -260,151 +76,57 @@
     background: transparent;
     transition: background .3s ease;
   }
-  .route__cell:hover::before{ background: var(--rust); }
-
-  /* ---- Founders ---- */
-  .home-founders{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0;
-    border: 1px solid var(--rule);
-    margin-top: 24px;
+  .route-card:hover::before{ background: var(--rust); }
+  .route-card__num{
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: .10em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    margin-bottom: 10px;
   }
-  .home-founder{
-    padding: 36px 36px 40px;
-    border-right: 1px solid var(--rule);
-    display: grid;
-    grid-template-columns: auto 1fr;
-    gap: 28px;
-    align-items: start;
-  }
-  .home-founder:last-child{ border-right: 0; }
-  .home-founder__photo{
-    width: 88px;
-    aspect-ratio: 4 / 5;
-    background: linear-gradient(135deg, var(--paper-3), var(--paper-4));
-    border: 1px solid var(--rule);
-    overflow: hidden;
-    flex-shrink: 0;
-  }
-  .home-founder__photo img{
-    width: 100%; height: 100%;
-    object-fit: cover;
-    filter: grayscale(.35) sepia(.25) contrast(1.02) brightness(.97) saturate(.85);
-    mix-blend-mode: multiply;
-  }
-  .home-founder__name{
-    font-family: var(--serif);
-    font-weight: 400;
-    font-size: clamp(32px, 3.5vw, 48px);
-    line-height: .95;
-    margin: 0 0 6px;
-    letter-spacing: -.015em;
-  }
-  .home-founder__name em{ font-style: italic; color: var(--rust); }
-  .home-founder__role{
+  .route-card__tag{
     font-family: var(--mono);
     font-size: 12px;
     letter-spacing: .10em;
     text-transform: uppercase;
-    color: var(--ink-mute);
-    margin-bottom: 16px;
-    line-height: 1.5;
+    color: var(--rust);
+    margin-bottom: 28px;
   }
-  .home-founder p{
-    font-size: 16.5px;
+  .route-card__title{
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: clamp(28px, 3.5vw, 52px);
+    line-height: 1.08;
+    letter-spacing: -.012em;
+    margin: 0 0 24px;
+    max-width: 22ch;
+  }
+  .route-card__title em{ font-style: italic; color: var(--rust); }
+  .route-card__body{
+    font-size: 17px;
     color: var(--ink-soft);
     line-height: 1.65;
-    max-width: 46ch;
-    margin: 0;
+    max-width: 44ch;
+    margin: 0 0 40px;
   }
-
-  /* ---- Belief statement ---- */
-  .belief{
-    border: 1px solid var(--rule);
-    padding: 48px 52px;
-    margin-top: 24px;
-    background: var(--ink);
-    position: relative;
-    overflow: hidden;
-  }
-  .belief::before{
-    content: "\201C";
-    position: absolute;
-    left: 24px; top: -24px;
-    font-family: var(--serif);
-    font-size: 180px;
-    line-height: 1;
-    color: var(--rust);
-    opacity: .2;
-    pointer-events: none;
-  }
-  .belief__text{
-    font-family: var(--serif);
-    font-style: italic;
-    font-size: clamp(22px, 2.6vw, 36px);
-    line-height: 1.28;
-    color: #efe7d4;
-    max-width: 54ch;
-    margin: 0 0 24px;
-  }
-  .belief__text em{ color: var(--rust-light); }
-  .belief__cite{
+  .route-card__cta{
     font-family: var(--mono);
     font-size: 12px;
-    letter-spacing: .12em;
+    letter-spacing: .10em;
     text-transform: uppercase;
-    color: rgba(239,231,212,.45);
-  }
-
-  /* ---- Scope tags ---- */
-  .scope-tags{
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0;
-    border: 1px solid var(--rule);
-    margin-top: 24px;
-  }
-  .scope-tag{
-    padding: 18px 24px;
-    border-right: 1px solid var(--rule);
-    border-bottom: 1px solid var(--rule);
-    font-family: var(--serif);
-    font-style: italic;
-    font-size: clamp(20px, 2vw, 26px);
-    color: var(--ink);
-    display: flex;
+    color: var(--rust);
+    display: inline-flex;
     align-items: center;
-    gap: 14px;
+    gap: 10px;
+    transition: gap .2s ease;
   }
-  .scope-tag::before{
-    content: "";
-    width: 6px; height: 6px; border-radius: 50%;
-    background: var(--rust);
-    flex-shrink: 0;
-  }
+  .route-card:hover .route-card__cta{ gap: 18px; }
 
-  @media (max-width: 980px){
-    .home-hero__split{ grid-template-columns: 1fr; }
-    .home-hero__left{ border-right: 0; border-bottom: 1px solid var(--rule); padding-right: 0; }
-    .home-hero__right{ padding-left: 0; }
-    .home-hero__title{ font-size: clamp(44px, 13vw, 108px); }
-    .proof{ grid-template-columns: 1fr; }
-    .proof__cell + .proof__cell{ border-top: 1px solid var(--rule); }
-    .pillars{ grid-template-columns: 1fr; }
-    .pillar{ border-right: 0; border-bottom: 1px solid var(--rule); }
-    .pillar:last-child{ border-bottom: 0; }
-    .route{ grid-template-columns: 1fr; }
-    .route__cell{ border-right: 0; border-bottom: 1px solid var(--rule); }
-    .route__cell:last-child{ border-bottom: 0; }
-    .home-founders{ grid-template-columns: 1fr; }
-    .home-founder{ border-right: 0; border-bottom: 1px solid var(--rule); }
-    .home-founder:last-child{ border-bottom: 0; }
-    .belief{ padding: 36px 28px; }
-  }
-  @media (max-width: 640px){
-    .home-founder{ grid-template-columns: 1fr; }
-    .scope-tag{ font-size: 18px; }
+  @media (max-width: 768px){
+    .routes{ grid-template-columns: 1fr; }
+    .route-card{ border-right: 0; border-bottom: 1px solid var(--rule); }
+    .route-card:last-child{ border-bottom: 0; }
   }
 </style>
 </head>
@@ -435,9 +157,8 @@
     </div>
   </nav>
 
-  <!-- HERO -->
-  <header class="home-hero">
-    <div class="home-hero__eyebrow reveal">
+  <header class="home-hero reveal">
+    <div class="home-hero__eyebrow">
       <span class="pip"></span>
       <span>Digitale Plattformen</span>
       <span style="color:var(--rule);">·</span>
@@ -445,260 +166,39 @@
       <span style="color:var(--rule);">·</span>
       <span>4–14 Wochen Lieferzeit</span>
     </div>
-
-    <div class="home-hero__split">
-      <div class="home-hero__left reveal">
-        <h1 class="home-hero__title">
-          Digital&shy;platt&shy;formen, <em>in Wochen geliefert.</em>
-        </h1>
-        <p class="home-hero__sub">
-          Eine kleine DACH-fokussierte Firma, die Sanity-basierte Plattformen für mittelständische Unternehmen baut &mdash; <strong>direkt</strong> und über Partneragenturen, die diese Kunden bereits betreuen.
-        </p>
-      </div>
-
-      <div class="home-hero__right reveal">
-        <div class="home-hero__proof">
-          <div class="home-hero__proof-item">
-            <div class="home-hero__proof-num">830k EUR</div>
-            <div class="home-hero__proof-label">Plattform-Umsatz &middot; 6 Monate &middot; 1 Partner</div>
-          </div>
-          <div class="home-hero__proof-item">
-            <div class="home-hero__proof-num">4–14 Wochen</div>
-            <div class="home-hero__proof-label">Lieferzeit von Briefing bis Launch</div>
-          </div>
-          <div class="home-hero__proof-item">
-            <div class="home-hero__proof-num">Bis zu 38%</div>
-            <div class="home-hero__proof-label">Agentur-Marge auf Plattform-Umsatz</div>
-          </div>
-        </div>
-        <div class="home-hero__routing">
-          <div class="home-hero__routing-label">Wählen Sie Ihren Weg</div>
-          <a href="for-clients.html" class="cta">
-            Ich brauche eine Plattform
-            <span class="cta__arrow">&rarr;</span>
-          </a>
-          <a href="for-partners.html" class="cta cta--ghost">
-            Ich bin eine Agentur
-            <span class="cta__arrow">&rarr;</span>
-          </a>
-        </div>
-      </div>
-    </div>
+    <h1 class="home-hero__title">
+      Digital&shy;platt&shy;formen, <em>in Wochen geliefert.</em>
+    </h1>
+    <p class="home-hero__sub">
+      Ein eingespieltes Senior-Team mit Enterprise-Erfahrung &mdash; f&uuml;r mittelst&auml;ndische Unternehmen in DACH, direkt oder &uuml;ber Partneragenturen.
+    </p>
   </header>
 
-</div>
-
-<!-- MARQUEE BAND -->
-<div class="band" aria-hidden="true">
-  <div class="band__inner">
-    <span class="band__item">Blueprint-Methodik <span class="dot">·</span></span>
-    <span class="band__item">Sanity CMS <span class="dot">·</span></span>
-    <span class="band__item">Designer-geführte Produktion <span class="dot">·</span></span>
-    <span class="band__item">Architektengeprüfte Qualität <span class="dot">·</span></span>
-    <span class="band__item">72-Stunden-Rhythmus <span class="dot">·</span></span>
-    <span class="band__item">Scope &amp; Timeline in Schrift <span class="dot">·</span></span>
-    <span class="band__item">Unabhängige Übergabe <span class="dot">·</span></span>
-    <span class="band__item">Blueprint-Methodik <span class="dot">·</span></span>
-    <span class="band__item">Sanity CMS <span class="dot">·</span></span>
-    <span class="band__item">Designer-geführte Produktion <span class="dot">·</span></span>
-    <span class="band__item">Architektengeprüfte Qualität <span class="dot">·</span></span>
-    <span class="band__item">72-Stunden-Rhythmus <span class="dot">·</span></span>
-    <span class="band__item">Scope &amp; Timeline in Schrift <span class="dot">·</span></span>
-    <span class="band__item">Unabhängige Übergabe <span class="dot">·</span></span>
+  <div class="routes">
+    <a href="for-clients.html" class="route-card reveal">
+      <div class="route-card__num">01</div>
+      <div class="route-card__tag">Direktkunden</div>
+      <h2 class="route-card__title">Sie brauchen eine Plattform. <em>Wir bauen sie.</em></h2>
+      <p class="route-card__body">Mittelst&auml;ndische Unternehmen, die eine digitale Plattform launchen oder replatformen wollen &mdash; mit schriftlichem Commitment auf Scope, Timeline und Qualit&auml;t. Echte &Uuml;bergabe an Ihr Team.</p>
+      <span class="route-card__cta">F&uuml;r Direktkunden &rarr;</span>
+    </a>
+    <a href="for-partners.html" class="route-card reveal">
+      <div class="route-card__num">02</div>
+      <div class="route-card__tag">Partneragenturen</div>
+      <h2 class="route-card__title">Sie haben die Kunden. <em>Wir liefern die Plattform.</em></h2>
+      <p class="route-card__body">Agenturen, deren Kunden mehr brauchen, als das Team intern liefern kann. Sie behalten die Kundenbeziehung und den Upsell-Umsatz. Wir liefern die Plattform darunter.</p>
+      <span class="route-card__cta">F&uuml;r Partneragenturen &rarr;</span>
+    </a>
   </div>
-</div>
-
-<div class="shell">
-
-  <!-- 01 — DER NACHWEIS -->
-  <section class="chap" id="nachweis">
-    <div class="chap__head reveal">
-      <div class="chap__num">Abschnitt<span>01</span></div>
-      <h2 class="chap__title">Kein Konzept. <em>Operative Geschichte.</em></h2>
-    </div>
-
-    <div class="chap__body">
-      <div class="margin-label"><span class="swatch"></span>Nachweis</div>
-      <div class="wide">
-        <div class="proof reveal">
-          <div class="proof__cell">
-            <div class="proof__label">Sechs Monate · Ein Partner</div>
-            <div class="proof__num">830<em>k</em></div>
-            <p class="proof__note">EUR Plattform-Umsatz, den wir in sechs Monaten für eine bestehende Partneragentur erzeugt haben &mdash; durch Konvertierung ihrer HubSpot-CMS-Kunden.</p>
-          </div>
-          <div class="proof__cell">
-            <div class="proof__label">Referenz-Engagement</div>
-            <div class="proof__num">140<em>h</em></div>
-            <p class="proof__note">Developer-Stunden für 60&nbsp;% eines 90&nbsp;000&nbsp;EUR-Projekts. Der Rest: Architektur, Design, Content-Ops, Senior-Review. Entwickler sind eine Minderheit, nicht die Mehrheit.</p>
-          </div>
-          <div class="proof__cell">
-            <div class="proof__label">Margin-Profil</div>
-            <div class="proof__num">30<em>–35&nbsp;%</em></div>
-            <p class="proof__note">Netto-Marge auf einem gut geführten Engagement. Möglich, weil unser Blueprint-Modell die teurste Ressource &mdash; Developer-Stunden &mdash; strukturell reduziert.</p>
-          </div>
-        </div>
-
-        <p class="col" style="max-width: var(--measure); margin-top: 28px;">Veren ist kein spekulatives Startup. Es ist die Formalisierung eines Liefermodells, das <span class="hl">bereits in Betrieb ist und bereits echten Umsatz erzeugt.</span> Was wir jetzt tun: die Firma um das aufbauen, was sich bereits als funktionierend erwiesen hat.</p>
-      </div>
-    </div>
-  </section>
-
-
-  <!-- 02 — WAS WIR GLAUBEN -->
-  <section class="chap" id="modell">
-    <div class="chap__head reveal">
-      <div class="chap__num">Abschnitt<span>02</span></div>
-      <h2 class="chap__title">Das traditionelle Agenturmodell <em>ist kaputt.</em></h2>
-    </div>
-
-    <div class="chap__body">
-      <div class="margin-label"><span class="swatch"></span>Das Problem</div>
-      <div class="wide">
-        <div class="belief reveal">
-          <p class="belief__text">Es verkauft Stunden, die es nicht brauchen sollte. Es liefert Websites in sechs Monaten, die sechs Wochen dauern sollten. Es hinterlässt Kunden in Abhängigkeit vom Agenturteam für jede Änderung. Und es behandelt die Plattform als Deliverable statt als Anfang einer Beziehung. Das ist nicht die Schuld des Kunden. <em>Es ist die Schuld des Modells.</em></p>
-          <div class="belief__cite">&mdash; Veren &middot; Ausgangspunkt</div>
-        </div>
-
-        <p class="col" style="max-width: var(--measure); margin-top: 28px;">Veren ist für die Mitte gebaut. <strong>Seriöse Lieferung, schnell, zu Preisen, die beide Seiten respektieren</strong> &mdash; möglich, weil wir anders arbeiten: Blueprint statt leere Seite, Designer-geführte Produktion statt Developer-Queue, 72-Stunden-Rhythmus statt monatlichem Schweigen.</p>
-      </div>
-    </div>
-  </section>
-
-
-  <!-- 03 — WIE WIR ARBEITEN -->
-  <section class="chap" id="arbeitsweise">
-    <div class="chap__head reveal">
-      <div class="chap__num">Abschnitt<span>03</span></div>
-      <h2 class="chap__title">Wie wir <em>tatsächlich liefern.</em></h2>
-    </div>
-    <p class="chap__lede reveal">Drei Mechanismen, die unser Modell von einer normalen Agentur unterscheiden. Keine davon ist Marketing.</p>
-
-    <div class="chap__body">
-      <div class="margin-label"><span class="swatch"></span>Methodik</div>
-      <div class="wide">
-        <div class="pillars reveal">
-          <div class="pillar">
-            <div class="pillar__no">01 · Blueprint</div>
-            <h3>Keine leere Seite.</h3>
-            <p>Wir bauen nicht jedes Projekt von null. Unser produktisiertes Blueprint-Fundament absorbiert die strukturelle Arbeit &mdash; Designsystem, Page Builder, Content-Modell, Deployment &mdash; damit wir die kundenspezifische Schicht obendrauf bauen, nicht darunter.</p>
-          </div>
-          <div class="pillar">
-            <div class="pillar__no">02 · Produktion</div>
-            <h3>Designer statt Developer-Queue.</h3>
-            <p>Sobald das System steht, werden Seiten primär von Designern und Content-Ops produziert &mdash; nicht von Entwickler-Warteschlangen gebremst. Das ist, was unsere Timelines möglich macht, ohne Qualität zu opfern.</p>
-          </div>
-          <div class="pillar">
-            <div class="pillar__no">03 · Rhythmus</div>
-            <h3>Update alle 72 Stunden.</h3>
-            <p>Drei Qualitätsgates pro Engagement, nicht fünfzehn. Alle 72 Stunden ein Kunden-Update. Der Kunde bleibt informiert, ohne jede Mikroentscheidung zu reviewen &mdash; das Muster, das Agentur-Frustration unmöglich macht.</p>
-          </div>
-        </div>
-
-        <div class="scope-tags reveal">
-          <div class="scope-tag">CMS</div>
-          <div class="scope-tag">CRM</div>
-          <div class="scope-tag">PIM</div>
-          <div class="scope-tag">E-Commerce</div>
-          <div class="scope-tag">Integrationen</div>
-          <div class="scope-tag">B2B-Portale</div>
-          <div class="scope-tag">Automatisierungen</div>
-          <div class="scope-tag">UI / UX Design</div>
-          <div class="scope-tag">Strategie</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-
-  <!-- 04 — ZWEI WEGE -->
-  <section class="chap" id="wege">
-    <div class="chap__head reveal">
-      <div class="chap__num">Abschnitt<span>04</span></div>
-      <h2 class="chap__title">Zwei Wege. <em>Eine Firma.</em></h2>
-    </div>
-    <p class="chap__lede reveal">Dieselbe Kompetenz, unterschiedliche Beziehungsstrukturen. Wählen Sie den Weg, der zu Ihrer Situation passt.</p>
-
-    <div class="chap__body">
-      <div class="margin-label"><span class="swatch"></span>Zielgruppen</div>
-      <div class="wide">
-        <div class="route reveal">
-          <div class="route__cell">
-            <div class="route__tag"><span class="num">01</span>Direktkunden</div>
-            <h3 class="route__title">Sie brauchen eine Plattform. <em>Wir bauen sie.</em></h3>
-            <p class="route__body">Mittelständische Unternehmen (5–150&nbsp;Mio.&nbsp;EUR Umsatz), die eine digitale Plattform launchen oder replatformen wollen &mdash; mit Commitment auf Scope, Timeline und Qualität, schriftlich. Übergabe an Ihr Team, ohne Agenturabhängigkeit.</p>
-            <a href="for-clients.html" class="cta">Für Direktkunden <span class="cta__arrow">&rarr;</span></a>
-          </div>
-          <div class="route__cell">
-            <div class="route__tag"><span class="num">02</span>Partneragenturen</div>
-            <h3 class="route__title">Sie haben die Kunden. <em>Wir liefern die Plattform.</em></h3>
-            <p class="route__body">HubSpot-Agenturen, RevOps-Agenturen und andere, deren Kunden mehr brauchen, als die Agentur intern effizient liefern kann. Sie behalten die Kundenbeziehung und den Upsell-Umsatz. Wir liefern die Plattform darunter.</p>
-            <a href="for-partners.html" class="cta">Für Partneragenturen <span class="cta__arrow">&rarr;</span></a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-
-  <!-- 05 — WER WIR SIND -->
-  <section class="chap" id="team">
-    <div class="chap__head reveal">
-      <div class="chap__num">Abschnitt<span>05</span></div>
-      <h2 class="chap__title">Zwei Gründer. <em>Absichtlich klein.</em></h2>
-    </div>
-
-    <div class="chap__body">
-      <div class="margin-label"><span class="swatch"></span>Das Team</div>
-      <div class="wide">
-        <p class="col" style="max-width: var(--measure);">Wir wollen keine Agentur mit hundert Leuten sein. Wir wollen die Firma sein, die mittelständische DACH-Unternehmen anrufen, wenn sie eine digitale Plattform brauchen, die tatsächlich funktioniert &mdash; geliefert von Menschen, denen es wirklich wichtig ist, in einem Rhythmus, der sich tatsächlich bewegt.</p>
-
-        <div class="home-founders reveal">
-          <div class="home-founder">
-            <div class="home-founder__photo">
-              <img src="media/team/merdan.jpg" alt="Merdan" loading="lazy" />
-            </div>
-            <div>
-              <div class="home-founder__name">Merd<em>a</em>n</div>
-              <div class="home-founder__role">Mitgründer &middot; Vertrieb &amp; Kundenarbeit &middot; Deutschland</div>
-              <p class="home-founder p" style="font-size:14.5px;color:var(--ink-soft);line-height:1.56;max-width:46ch;margin:0;">UX- und Design-Hintergrund, SEO- und Content-Strategie, nativer Deutschsprecher mit tiefem DACH-Marktzugang. Verantwortlich für Kundenbeziehungen, Positionierung und das äußere Gesicht der Firma.</p>
-            </div>
-          </div>
-          <div class="home-founder">
-            <div class="home-founder__photo">
-              <img src="media/team/victor.jpg" alt="Victor" loading="lazy" />
-            </div>
-            <div>
-              <div class="home-founder__name">Vict<em>o</em>r</div>
-              <div class="home-founder__role">Mitgründer &middot; Architektur &amp; Delivery</div>
-              <p style="font-size:14.5px;color:var(--ink-soft);line-height:1.56;max-width:46ch;margin:0;">Jahrzehnt Full-Stack-Architektur, Headless-CMS-Spezialisierung, Enterprise-Plattform-Erfahrung. Erbauer von Stratum. Verantwortlich für Lieferqualität, technische Architektur und die Methodik, die das Modell trägt.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-
-  <!-- FOOTER -->
 
 </div>
 
 <script>
-  const bar = document.getElementById('bar');
-  const onScroll = () => {
-    const h = document.documentElement;
-    const max = h.scrollHeight - h.clientHeight;
-    const pct = max > 0 ? (h.scrollTop / max) * 100 : 0;
-    bar.style.width = pct + '%';
-  };
-  document.addEventListener('scroll', onScroll, { passive: true });
-  onScroll();
-
   const io = new IntersectionObserver((entries) => {
     for (const e of entries){
       if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
     }
-  }, { rootMargin: '0px 0px -8% 0px', threshold: 0.05 });
+  }, { threshold: 0.08 });
   document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 </script>
 </body>
