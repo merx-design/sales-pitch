@@ -1,0 +1,653 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Veren — Für Direktkunden · Digitale Plattformen, geliefert in Wochen.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Hanken+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles/veren.css" />
+<style>
+  .hero{ padding: clamp(40px, 5vw, 80px) 0 0; }
+  .hero__eyebrow{
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    margin-bottom: 18px;
+    display: inline-flex; align-items: center; gap: 10px;
+  }
+  .hero__eyebrow .pill{
+    border: 1px solid var(--rule);
+    padding: 4px 10px;
+    color: var(--rust);
+  }
+  .hero__title{
+    font-family: var(--serif);
+    font-weight: 400;
+    font-size: clamp(32px, 4vw, 56px);
+    line-height: 1.08;
+    letter-spacing: -.012em;
+    margin: 0;
+    color: var(--ink);
+    max-width: 28ch;
+  }
+  .hero__title em{ font-style: italic; color: var(--rust); }
+  .hero__sub{
+    margin-top: clamp(28px, 3.5vw, 44px);
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: clamp(18px, 1.9vw, 24px);
+    line-height: 1.38;
+    color: var(--ink-soft);
+    max-width: 60ch;
+  }
+
+  /* Differentiators */
+  .diffs{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0;
+    border: 1px solid var(--rule);
+    margin-top: 24px;
+  }
+  .diff{
+    padding: 32px 32px 36px;
+    border-right: 1px solid var(--rule);
+    border-bottom: 1px solid var(--rule);
+  }
+  .diff:nth-child(2n){ border-right: 0; }
+  .diff:nth-last-child(-n+2){ border-bottom: 0; }
+  .diff__label{
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--rust);
+    margin-bottom: 14px;
+  }
+  .diff h3{
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(24px, 2.4vw, 34px);
+    line-height: 1.06;
+    margin: 0 0 14px;
+  }
+  .diff p{
+    font-size: 15px;
+    color: var(--ink-soft);
+    line-height: 1.58;
+    margin: 0;
+    max-width: 42ch;
+  }
+
+  /* What you get */
+  .deliverables{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    border: 1px solid var(--rule);
+    margin-top: 24px;
+  }
+  .deliverable{
+    padding: 28px 28px 32px;
+    border-right: 1px solid var(--rule);
+  }
+  .deliverable:last-child{ border-right: 0; }
+  .deliverable__no{
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    margin-bottom: 14px;
+  }
+  .deliverable__no em{ color: var(--rust); font-style: normal; }
+  .deliverable h3{
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(22px, 2.2vw, 30px);
+    line-height: 1.1;
+    margin: 0 0 12px;
+  }
+  .deliverable p{
+    font-size: 14.5px;
+    color: var(--ink-soft);
+    line-height: 1.55;
+    margin: 0;
+  }
+
+  /* Timeline steps */
+  .steps{
+    margin-top: 24px;
+    border: 1px solid var(--rule);
+  }
+  .step{
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  .step:last-child{ border-bottom: 0; }
+  .step__when{
+    padding: 22px 24px;
+    border-right: 1px solid var(--rule);
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--rust);
+    line-height: 1.6;
+  }
+  .step__body{
+    padding: 22px 28px;
+  }
+  .step__body h4{
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(18px, 1.8vw, 24px);
+    line-height: 1.1;
+    margin: 0 0 8px;
+    color: var(--ink);
+  }
+  .step__body p{
+    font-size: 14.5px;
+    color: var(--ink-soft);
+    line-height: 1.55;
+    margin: 0;
+    max-width: 64ch;
+  }
+  .step--gate .step__when{ color: var(--green); }
+  .step--gate .step__body h4{ color: var(--green); }
+
+  /* CTA block */
+  .cta-block{
+    margin-top: 24px;
+    border: 1px solid var(--rule);
+    padding: 44px 48px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 48px;
+    align-items: center;
+    background: var(--ink);
+  }
+  .cta-block__text h3{
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(24px, 2.6vw, 36px);
+    line-height: 1.12;
+    margin: 0 0 10px;
+    color: #efe7d4;
+  }
+  .cta-block__text p{
+    font-size: 14.5px;
+    color: rgba(239,231,212,.6);
+    margin: 0;
+    max-width: 48ch;
+  }
+  .cta-block__actions{
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    flex-shrink: 0;
+  }
+  .cta--light{
+    background: #efe7d4;
+    color: var(--ink);
+    border-color: #efe7d4;
+  }
+  .cta--light:hover{
+    background: var(--rust);
+    border-color: var(--rust);
+    color: #efe7d4;
+  }
+
+  @media (max-width: 980px){
+    .hero{ text-align: center; }
+    .hero__eyebrow{ justify-content: center; }
+    .hero__title{ margin-left: auto; margin-right: auto; }
+    .hero__sub{ margin-left: auto; margin-right: auto; }
+    .diffs{ grid-template-columns: 1fr; }
+    .diff{ border-right: 0 !important; }
+    .deliverables{ grid-template-columns: 1fr; }
+    .deliverable{ border-right: 0; border-bottom: 1px solid var(--rule); }
+    .deliverable:last-child{ border-bottom: 0; }
+    .step{ grid-template-columns: 1fr; }
+    .step__when{ border-right: 0; border-bottom: 1px solid var(--rule); padding: 14px 24px; }
+    .cta-block{ grid-template-columns: 1fr; gap: 28px; padding: 32px 28px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="progress" aria-hidden="true"><div class="progress__bar" id="bar"></div></div>
+
+<div class="shell">
+
+  <nav class="docnav">
+    <a href="index.html" class="docnav__brand" aria-label="Veren">
+      <svg class="mark" viewBox="0 0 200 200" aria-hidden="true">
+        <path d="M30 40 L100 168 L170 40" fill="none" stroke="currentColor" stroke-width="14" stroke-linecap="square" stroke-linejoin="miter"/>
+        <line x1="14" y1="40" x2="186" y2="40" stroke="currentColor" stroke-width="6"/>
+        <circle class="pulse" cx="100" cy="40" r="11" fill="#b14a2c"/>
+      </svg>
+      Ver<em>e</em>n
+    </a>
+    <div class="docnav__links">
+      <a href="index.html">Start</a>
+      <a href="for-partners.html">Für Partner</a>
+      <a href="for-clients.html" class="is-current">Für Kunden</a>
+    </div>
+    <div class="docnav__meta">
+      <span>Für Direktkunden</span>
+      <span class="dot">·</span>
+      <span>Scope. Timeline. Übergabe.</span>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="hero__eyebrow reveal">
+      <span class="pill">Für Direktkunden</span>
+      <span>Mittelstand &middot; DACH &middot; 5–150 Mio. EUR Umsatz</span>
+    </div>
+
+    <h1 class="hero__title reveal">Sie wollen eine Plattform, die funktioniert. <em>Nicht einen Anbieter, von dem Sie abhängig bleiben.</em></h1>
+
+    <p class="hero__sub reveal">Veren liefert Sanity-basierte digitale Plattformen für mittelständische Unternehmen in DACH &mdash; mit schriftlichem Commitment auf Scope, Timeline und Qualität, und echter Übergabe an Ihr Team.</p>
+  </header>
+
+
+  <!-- 01 — DAS PROBLEM -->
+  <section class="chap" id="problem">
+    <div class="chap__head reveal">
+      <div class="chap__num">Abschnitt<span>01</span></div>
+      <h2 class="chap__title">Die meisten Plattformprojekte <em>scheitern, bevor sie beginnen.</em></h2>
+    </div>
+
+    <div class="chap__body">
+      <div class="margin-label"><span class="swatch"></span>Das Problem</div>
+      <div class="col">
+        <p>Sie kennen das Muster. Das Agenturangebot kommt mit sechs Monaten Laufzeit und dem doppelten Budget zurück, das Sie erwartet hatten. Das Proposal ist nach Stunden gebaut, nicht nach Ergebnissen. Auf halbem Weg beginnt Scope-Drift. Zum Launch hin ist Ihr Team für jede Änderung auf die Agentur angewiesen &mdash; und ein Jahr später zahlen Sie Retainer-Gebühren, nur um ein Hero-Bild zu aktualisieren.</p>
+
+        <p>Der Markt gibt Ihnen zwei Optionen, die beide versagen. Große Agenturen bewegen sich langsam und kalkulieren für ihren eigenen Overhead. Günstige Shops kürzen ab und hinterlassen technische Schulden. <span class="hl">Es gibt eine fehlende Mitte: seriöse Lieferung, schnell, zu einem Preis, der beide Seiten respektiert.</span></p>
+
+        <p>Das ist, wo Veren existiert.</p>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- 02 — WIE WIR ANDERS SIND -->
+  <section class="chap" id="unterschied">
+    <div class="chap__head reveal">
+      <div class="chap__num">Abschnitt<span>02</span></div>
+      <h2 class="chap__title">Wir verkaufen <em>Scope, nicht Stunden.</em></h2>
+    </div>
+    <p class="chap__lede reveal">Jedes Veren-Engagement committet schriftlich auf Scope, Timeline und Qualität. Wenn wir schneller sind, ist das unsere Marge. Wenn wir langsamer sind, ist das unser Verlust.</p>
+
+    <div class="chap__body">
+      <div class="margin-label"><span class="swatch"></span>Unterschied</div>
+      <div class="wide">
+        <div class="diffs reveal">
+          <div class="diff">
+            <div class="diff__label">Vorteil 01</div>
+            <h3>Ein Blueprint, keine leere Seite.</h3>
+            <p>Wir bauen nicht jedes Projekt von null. Unser produktisiertes Fundament absorbiert die strukturelle Arbeit &mdash; Designsystem, Page Builder, Content-Modell, Deployment-Pipeline &mdash; damit wir Ihre spezifische Schicht obendrauf bauen, auf etwas Bewährtem.</p>
+          </div>
+          <div class="diff">
+            <div class="diff__label">Vorteil 02</div>
+            <h3>Designer-geführte Produktion.</h3>
+            <p>Sobald das System steht, werden Seiten primär von Designern und Content-Ops produziert &mdash; nicht von Entwickler-Warteschlangen gebremst. Ihre Plattform skaliert mit Ihren Bedürfnissen, nicht mit der Bandbreite unseres Teams.</p>
+          </div>
+          <div class="diff">
+            <div class="diff__label">Vorteil 03</div>
+            <h3>Senior-Urteilsvermögen durchgehend.</h3>
+            <p>Architektur, Design-Richtung und Qualitäts-Review werden von Gründern übernommen &mdash; nicht an Junior-Staff delegiert, der zu Senior-Preisen abgerechnet wird. Sie zahlen für die Erfahrung, die zählt.</p>
+          </div>
+          <div class="diff">
+            <div class="diff__label">Vorteil 04</div>
+            <h3>72-Stunden-Rhythmus.</h3>
+            <p>Update alle drei Tage. Drei formale Approval-Gates über das Engagement, nicht fünfzehn. Sie bleiben informiert, ohne Mikromanagement. Das Muster, das Agentur-Frustration strukturell unmöglich macht.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- 03 — WAS SIE BEKOMMEN -->
+  <section class="chap" id="ergebnis">
+    <div class="chap__head reveal">
+      <div class="chap__num">Abschnitt<span>03</span></div>
+      <h2 class="chap__title">Eine Plattform, die <em>Ihrem Team gehört.</em></h2>
+    </div>
+
+    <div class="chap__body">
+      <div class="margin-label"><span class="swatch"></span>Das Ergebnis</div>
+      <div class="wide">
+        <div class="deliverables reveal">
+          <div class="deliverable">
+            <div class="deliverable__no"><em>01</em> · Deliverable</div>
+            <h3>Eine funktionierende Plattform.</h3>
+            <p>Designed, gebaut, integriert und gelauncht an einem Datum, zu dem wir uns verpflichtet haben. Keine Überraschungen, kein Scope-Drift nach Vertragsunterzeichnung.</p>
+          </div>
+          <div class="deliverable">
+            <div class="deliverable__no"><em>02</em> · Deliverable</div>
+            <h3>Ein trainiertes Team auf Ihrer Seite.</h3>
+            <p>Ihr Editorial- und Marketing-Team betreibt die Plattform nach dem Launch selbst. Vollständige Dokumentation, aufgezeichnete Trainings, keine Agenturabhängigkeit.</p>
+          </div>
+          <div class="deliverable">
+            <div class="deliverable__no"><em>03</em> · Optional</div>
+            <h3>Eine optionale Fortführung.</h3>
+            <p>Wenn Sie einen Retainer wollen, bieten wir einen an. Wenn Sie nach der Übergabe gehen wollen, gehen Sie. Ihre Plattform gehört Ihnen, vollständig und unabhängig.</p>
+          </div>
+        </div>
+
+        <p class="col" style="max-width: var(--measure); margin-top: 24px;">Wir messen Erfolg daran, ob Sie uns in zwei Jahren für die nächste Phase anrufen &mdash; nicht daran, ob Sie dauerhaft auf unsere Unterstützung angewiesen sind.</p>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- 04 — DIE DREI TIERS -->
+  <section class="chap" id="tiers">
+    <div class="chap__head reveal">
+      <div class="chap__num">Abschnitt<span>04</span></div>
+      <h2 class="chap__title">Gebaut für <em>wo Sie gerade sind.</em></h2>
+    </div>
+    <p class="chap__lede reveal">Drei Tiers, dieselbe Methodik, unterschiedliche Skala. Gleicher Blueprint, gleicher Rhythmus, gleiche Übergabe-Verpflichtung.</p>
+
+    <div class="chap__body">
+      <div class="margin-label"><span class="swatch"></span>Tiers</div>
+      <div class="wide">
+        <div class="tiers reveal">
+          <div class="tier">
+            <div class="tier__no"><em>01</em> · Einsteiger</div>
+            <div class="tier__name">Starter</div>
+            <div class="tier__price">22–35&nbsp;k&nbsp;EUR <span class="sep">·</span> 4–5 Wochen</div>
+            <div class="tier__row">
+              <div class="k">Für</div>
+              <div class="v">Early-Stage-Unternehmen, B2B-Startups, einfache digitale Bedürfnisse</div>
+            </div>
+            <div class="tier__row">
+              <div class="k">Umfang</div>
+              <div class="v">5–7 Seiten, content-fokussiert, Standard-Formulare und Lead Capture</div>
+            </div>
+            <div class="tier__row">
+              <div class="k">Sprache</div>
+              <div class="v">Einsprachig</div>
+            </div>
+            <div class="tier__why">"Unser Einstiegsprodukt und unser Conversion-Funnel. Kunden, die hier starten, wachsen häufig in Foundation- oder Platform-Engagements hinein."</div>
+          </div>
+          <div class="tier">
+            <div class="tier__no"><em>02</em> · Standard</div>
+            <div class="tier__name">Foundation</div>
+            <div class="tier__price">65–85&nbsp;k&nbsp;EUR <span class="sep">·</span> 8–10 Wochen</div>
+            <div class="tier__row">
+              <div class="k">Für</div>
+              <div class="v">Ambitionierte KMU und kleinere Mittelständler (5–30 Mio. EUR)</div>
+            </div>
+            <div class="tier__row">
+              <div class="k">Umfang</div>
+              <div class="v">8–12 Seiten, Standard-Commerce oder Lead-Generierung</div>
+            </div>
+            <div class="tier__row">
+              <div class="k">Sprache</div>
+              <div class="v">Ein- oder zweisprachig</div>
+            </div>
+            <div class="tier__why">"Für Unternehmen, die ihre erste ernsthafte digitale Plattform aufbauen oder von etwas weg replatformen, das sie nicht mehr bedient."</div>
+          </div>
+          <div class="tier">
+            <div class="tier__no"><em>03</em> · Enterprise</div>
+            <div class="tier__name">Platform</div>
+            <div class="tier__price">120–160&nbsp;k&nbsp;EUR <span class="sep">·</span> 12–14 Wochen</div>
+            <div class="tier__row">
+              <div class="k">Für</div>
+              <div class="v">Mittelständler (15–150 Mio. EUR) mit komplexen digitalen Anforderungen</div>
+            </div>
+            <div class="tier__row">
+              <div class="k">Umfang</div>
+              <div class="v">15–30 Seiten, echtes E-Commerce, komplexe Integrationen, mehrsprachig</div>
+            </div>
+            <div class="tier__row">
+              <div class="k">Sprache</div>
+              <div class="v">Mehrsprachig</div>
+            </div>
+            <div class="tier__why">"Für Unternehmen mit echter Digital-Präsenz, mehreren Stakeholdern und einem Executive Sponsor, der in unserem Tempo bewegt werden kann."</div>
+          </div>
+        </div>
+
+        <p class="col" style="max-width: var(--measure); margin-top: 24px;">Jedes Engagement beginnt mit einem bezahlten Discovery. Sie verlassen das Discovery mit einem fixierten Scope, einem Architektur-Briefing, und einer ehrlichen Einschätzung, ob Veren die richtige Wahl ist. <strong>Wenn nicht, behalten Sie die Deliverables.</strong></p>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- 05 — WIE EIN PROJEKT LÄUFT -->
+  <section class="chap" id="ablauf">
+    <div class="chap__head reveal">
+      <div class="chap__num">Abschnitt<span>05</span></div>
+      <h2 class="chap__title">Acht Wochen, <em>im Detail.</em></h2>
+    </div>
+    <p class="chap__lede reveal">So läuft ein Foundation-Engagement (Tier 2) von Kickoff bis Übergabe. Platform-Engagements skalieren dies hoch; Starter-Engagements komprimieren es nach unten.</p>
+
+    <div class="chap__body">
+      <div class="margin-label"><span class="swatch"></span>Ablauf</div>
+      <div class="wide">
+        <div class="steps reveal">
+          <div class="step">
+            <div class="step__when">Woche 0<br>Discovery</div>
+            <div class="step__body">
+              <h4>Bezahltes Discovery (2–3 Tage).</h4>
+              <p>Strukturierte Workshops: Stakeholder-Mapping, technische Architektur, Content-Readiness, Risikobewertung. Sie verlassen das Discovery mit einem fixierten Scope, einer Preconditions-Checkliste, einem Architektur-Briefing und einer Risiko-Register. Sie entscheiden dann, ob wir weitermachen.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step__when">Woche 1<br>Kickoff</div>
+            <div class="step__body">
+              <h4>Preconditions &amp; Kickoff.</h4>
+              <p>Die Uhr startet, wenn die Preconditions-Checkliste komplett ist &mdash; Zugriff gewährt, Entscheidungsträger bestätigt, Content-Readiness bewertet, Integrationen umrissen. Architekten-geführter Kickoff alignt Ihr Team auf Rhythmus, Gates und Kommunikation.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step__when">Woche 2–3<br>Foundation</div>
+            <div class="step__body">
+              <h4>Foundation-Build.</h4>
+              <p>Designsystem angepasst vom Blueprint. Page Builder für Ihre Seitentypen konfiguriert. Content-Modell definiert. Integration-Architektur implementiert. 3–5 Referenz-Seiten gebaut. Developer-Stunden konzentriert hier, laufend gegen den Blueprint statt von null.</p>
+            </div>
+          </div>
+          <div class="step step--gate">
+            <div class="step__when">Gate 1<br>Sprint 2 Ende</div>
+            <div class="step__body">
+              <h4>System-Approval.</h4>
+              <p>Sie genehmigen das Designsystem und den Page Builder. Nach diesem Gate ist das System gesperrt. Änderungen lösen Scope-Gespräche aus, nicht Rework.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step__when">Woche 4–5<br>Produktion</div>
+            <div class="step__body">
+              <h4>Produktions-Anlauf.</h4>
+              <p>Restliche Seitentypen mit dem gesperrten System designed. Entwickler bauen Integrations-Logik und System-Erweiterungen. Designer wechseln in den Produktionsmodus, produzieren Seiten im Page Builder. Content-Ops beginnt Migrations-Vorbereitung.</p>
+            </div>
+          </div>
+          <div class="step step--gate">
+            <div class="step__when">Gate 2<br>Sprint 4 Mitte</div>
+            <div class="step__body">
+              <h4>Produktions-Sample-Review.</h4>
+              <p>Sie reviewen 5–10 Produktions-Seiten, die mit dem System gebaut wurden. Validiert, dass das System korrekt angewendet wird, bevor der vollständige Produktionslauf startet.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step__when">Woche 6–7<br>Bulk-Produktion</div>
+            <div class="step__body">
+              <h4>Produktions-Run.</h4>
+              <p>Bulk der Seiten von Designern und Content-Ops produziert, minimale Developer-Wiedereinbindung. QA läuft kontinuierlich, nicht am Ende. Bis Ende Sprint 7 ist die Plattform weitgehend fertig.</p>
+            </div>
+          </div>
+          <div class="step step--gate">
+            <div class="step__when">Gate 3<br>Woche 8</div>
+            <div class="step__body">
+              <h4>Pre-Launch-Review &amp; Launch.</h4>
+              <p>Finaler Content-Load, SEO-Checks, Performance-Testing, Accessibility-Validierung, Launch-Readiness. Training-Sessions für Ihr Editorial-Team. Dokumentation finalisiert. Plattform geht live. Eine Woche aktives Monitoring, schnelle Reaktion auf Probleme.</p>
+            </div>
+          </div>
+          <div class="step">
+            <div class="step__when">Ab Woche 9<br>Übergabe</div>
+            <div class="step__body">
+              <h4>Übergabe abgeschlossen.</h4>
+              <p>Finales Übergabe-Paket: Dokumentation, Trainings-Aufnahmen, Komponenten-Bibliotheks-Referenz, Blueprint-Anpassungen. Ihr Team betreibt die Plattform demonstrierbar unabhängig. Engagement schließt formal.</p>
+            </div>
+          </div>
+        </div>
+
+        <p class="col" style="max-width: var(--measure); margin-top: 24px;">Dies ist keine Wunsch-Timeline. Dies ist der Rhythmus, den das Modell strukturell erzeugt.</p>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- 06 — FAQ -->
+  <section class="chap" id="faq">
+    <div class="chap__head reveal">
+      <div class="chap__num">Abschnitt<span>06</span></div>
+      <h2 class="chap__title">Ehrliche Antworten <em>auf ehrliche Fragen.</em></h2>
+    </div>
+
+    <div class="chap__body">
+      <div class="margin-label"><span class="swatch"></span>FAQ</div>
+      <div class="wide">
+        <div class="faq reveal">
+          <details>
+            <summary>
+              <span class="qno">F &middot; 01</span>
+              <span class="qtext">Wie können Sie fixe Timelines committen, wenn die meisten Agenturen das nicht können?</span>
+              <span class="marker"></span>
+            </summary>
+            <div class="faq__answer">
+              <p>Zwei Gründe. Erstens absorbiert unser Blueprint die strukturelle Arbeit, die auf jedem Projekt normalerweise von Grund auf neu gebaut wird. Zweitens führen wir vor jedem Commitment ein bezahltes Discovery durch &mdash; bis wir für die Lieferung unterschreiben, haben beide Seiten Scope, Preconditions und Risiken vereinbart. Projekte, die nicht committiert werden können, werden nicht committiert.</p>
+            </div>
+          </details>
+          <details>
+            <summary>
+              <span class="qno">F &middot; 02</span>
+              <span class="qtext">Was, wenn ich nach dem Launch Änderungen brauche?</span>
+              <span class="marker"></span>
+            </summary>
+            <div class="faq__answer">
+              <p>Ihr Team ist trainiert, die meisten Änderungen selbst vorzunehmen &mdash; das ist, was der Page Builder und das Komponenten-System ermöglichen. Für größere Änderungen bieten wir optionale Retainer oder Scoped Change-Order-Engagements an. Der Retainer ist wirklich optional. Viele Kunden nutzen uns einmal im Jahr für eine Evolution; einige brauchen uns gar nicht mehr.</p>
+            </div>
+          </details>
+          <details>
+            <summary>
+              <span class="qno">F &middot; 03</span>
+              <span class="qtext">Warum Sanity statt WordPress, Webflow oder HubSpot CMS?</span>
+              <span class="marker"></span>
+            </summary>
+            <div class="faq__answer">
+              <p>Sanity ist die ausgereifteste Content-Plattform für die Art von Arbeit, die wir tun: strukturierter Content, mehrsprachig, redaktionelle Workflows, Integrations-intensiv. Wir setzen andere Plattformen ein, wenn sie die richtige Antwort sind &mdash; aber für unsere Spezialisierung ist Sanity das stärkste Fundament.</p>
+            </div>
+          </details>
+          <details>
+            <summary>
+              <span class="qno">F &middot; 04</span>
+              <span class="qtext">Wo ist Ihr Team ansässig?</span>
+              <span class="marker"></span>
+            </summary>
+            <div class="faq__answer">
+              <p>Engineering in Rumänien. Kundenführung in Deutschland. Beide sind vollständige Mitglieder der Firma. Unsere Käufer sind in DACH; unser Engineering-Hub befindet sich in einem der stärksten Tech-Talentmärkte Europas. Die Kombination ist das, was unsere Kostenstruktur ohne Qualitätskompromiss ermöglicht.</p>
+            </div>
+          </details>
+          <details>
+            <summary>
+              <span class="qno">F &middot; 05</span>
+              <span class="qtext">Was, wenn das Discovery zeigt, dass wir nicht die richtige Wahl sind?</span>
+              <span class="marker"></span>
+            </summary>
+            <div class="faq__answer">
+              <p>Sie behalten die Deliverables &mdash; Scope, Architektur-Briefing, Risikoregister, Empfehlungen. Sie sind nützlich, unabhängig davon, mit wem Sie als nächstes arbeiten. Discovery ist bezahlt, weil die Deliverables wertvoll sind, nicht weil wir sie als Hebel benutzen.</p>
+            </div>
+          </details>
+          <details>
+            <summary>
+              <span class="qno">F &middot; 06</span>
+              <span class="qtext">Ersetzen Sie eine traditionelle Agenturbeziehung, oder ergänzen Sie sie?</span>
+              <span class="marker"></span>
+            </summary>
+            <div class="faq__answer">
+              <p>Beides ist möglich. Manche Kunden bringen uns als ihren primären Plattform-Partner. Manche bringen uns neben einer bestehenden Agentur, die Branding, Paid Media oder Content-Produktion übernimmt. Wir sind klar darüber, was wir tun und was nicht, und funktionieren gut in beiden Setups.</p>
+            </div>
+          </details>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- 07 — CTA -->
+  <section class="chap" id="kontakt" style="border-bottom:0; padding-bottom: clamp(64px,9vw,140px);">
+    <div class="chap__head reveal">
+      <div class="chap__num">Abschnitt<span>07</span></div>
+      <h2 class="chap__title">Ein 30-Minuten-Gespräch <em>wert?</em></h2>
+    </div>
+
+    <div class="chap__body">
+      <div class="margin-label"><span class="swatch"></span>Kontakt</div>
+      <div class="wide">
+        <div class="cta-block reveal">
+          <div class="cta-block__text">
+            <h3>Discovery-Gespräche sind kurz, konkret und kein Pitch.</h3>
+            <p>Wir hören zuerst zu. Wenn wir die richtige Wahl sind, sagen wir es. Wenn nicht, sagen wir das auch &mdash; und weisen Sie wahrscheinlich auf jemanden hin, der es ist.</p>
+          </div>
+          <div class="cta-block__actions">
+            <a href="mailto:merdan@veren.io?subject=Discovery-Gespräch" class="cta cta--light">
+              Gespräch anfragen
+              <span class="cta__arrow">&rarr;</span>
+            </a>
+            <a href="index.html" class="cta cta--ghost" style="color:rgba(239,231,212,.7); border-color:rgba(239,231,212,.25);">
+              Zurück zur Startseite
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <footer class="colophon">
+    <div class="ornament">&sect; &sect; &sect;</div>
+    <h3 class="colophon__mark" style="margin-top:60px;">Ver<em>e</em>n &mdash; <em>für Direktkunden.</em></h3>
+    <div class="colophon__meta">
+      <span>Engineering &middot; Rumänien</span>
+      <span>Kundenarbeit &middot; Deutschland</span>
+      <span>merdan@veren.io</span>
+    </div>
+  </footer>
+
+</div>
+
+<script>
+  const bar = document.getElementById('bar');
+  const onScroll = () => {
+    const h = document.documentElement;
+    const max = h.scrollHeight - h.clientHeight;
+    const pct = max > 0 ? (h.scrollTop / max) * 100 : 0;
+    bar.style.width = pct + '%';
+  };
+  document.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  const io = new IntersectionObserver((entries) => {
+    for (const e of entries){
+      if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+    }
+  }, { rootMargin: '0px 0px -8% 0px', threshold: 0.05 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+</body>
+</html>
