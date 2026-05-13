@@ -180,7 +180,7 @@ body::after{
 
 .cover__title{
   font-family:var(--serif);
-  font-weight:800;
+  font-weight:600;
   font-size: clamp(86px, 18vw, 280px);
   line-height:.82;
   letter-spacing:-.025em;
@@ -291,7 +291,7 @@ section.chap{
 .chap__num span{ display:block; color:var(--rust); }
 .chap__title{
   font-family:var(--serif);
-  font-weight:700;
+  font-weight:500;
   font-size: clamp(36px, 5vw, 72px);
   line-height:1;
   letter-spacing:-.018em;
@@ -627,7 +627,7 @@ em{ font-family:var(--serif);  }
 .sub__num em{ color:var(--rust); font-style:normal; }
 .sub__title{
   font-family:var(--serif);
-  font-weight:700;
+  font-weight:500;
   font-size: clamp(30px, 3.2vw, 48px);
   line-height:1.1;
   margin:0 0 24px;
@@ -1208,7 +1208,7 @@ em{ font-family:var(--serif);  }
 }
 .path__title{
   font-family:var(--serif);
-  font-weight:700;
+  font-weight:500;
   font-size: clamp(32px, 3.4vw, 48px);
   line-height:1.05;
   margin:0 0 16px;
