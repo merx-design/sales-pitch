@@ -30,6 +30,7 @@
 }
 
 *,*::before,*::after{ box-sizing:border-box; }
+em{ font-style:normal; }
 html{ scroll-behavior:smooth; }
 body{
   margin:0;
