@@ -1,0 +1,793 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Veren — Logo Lab</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Hanken+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles/veren.css" />
+<style>
+  .lab{ padding: clamp(40px, 5vw, 80px) 0 120px; }
+  .lab__title{
+    font-family:var(--serif);
+    font-weight:400;
+    font-size: clamp(48px, 7vw, 96px);
+    line-height:.96;
+    letter-spacing:-.025em;
+    margin:0;
+    max-width:18ch;
+  }
+  .lab__title em{ font-style:italic; color:var(--rust); }
+  .lab__lede{
+    margin-top: 24px;
+    font-family:var(--serif);
+    font-style:italic;
+    font-size: clamp(18px, 1.8vw, 22px);
+    color:var(--ink-soft);
+    max-width:62ch;
+  }
+
+  .eyebrow{
+    font-family:var(--mono);
+    font-size:11px;
+    letter-spacing:.18em;
+    text-transform:uppercase;
+    color:var(--ink-mute);
+    margin: 56px 0 18px;
+    display:flex; gap:10px; align-items:center;
+  }
+  .eyebrow .num{ color:var(--rust); }
+  .eyebrow .rule{ flex:1; height:1px; background:var(--rule); }
+
+  .grid{
+    display:grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0;
+    border:1px solid var(--rule);
+  }
+  .grid--3{ grid-template-columns: repeat(3, 1fr); }
+  .card{
+    padding: 44px 36px 32px;
+    border-right:1px solid var(--rule);
+    border-bottom:1px solid var(--rule);
+    background: var(--paper);
+    position:relative;
+    min-height: 280px;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+  }
+  .card:nth-child(2n){ border-right:0; }
+  .grid--3 .card:nth-child(2n){ border-right:1px solid var(--rule); }
+  .grid--3 .card:nth-child(3n){ border-right:0; }
+  .card:nth-last-child(-n+2){ border-bottom:0; }
+  .grid--3 .card:nth-last-child(-n+3){ border-bottom:0; }
+
+  .card__stage{
+    flex:1;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding: 24px 0 32px;
+  }
+  .card__meta{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    gap:20px;
+  }
+  .card__label{
+    font-family:var(--mono);
+    font-size:10px;
+    letter-spacing:.18em;
+    text-transform:uppercase;
+    color:var(--rust);
+  }
+  .card__name{
+    font-family:var(--serif);
+    font-style:italic;
+    font-size: 22px;
+    line-height:1.1;
+    margin: 4px 0 6px;
+    color:var(--ink);
+  }
+  .card__note{
+    font-size:13px;
+    color:var(--ink-mute);
+    line-height:1.5;
+    font-family:var(--sans);
+    max-width:34ch;
+  }
+
+  /* dark stage variant */
+  .card--dark{ background: var(--ink); }
+  .card--dark .card__label{ color:var(--rust-light); }
+  .card--dark .card__name{ color:#f3ead3; }
+  .card--dark .card__note{ color:rgba(243,234,211,.55); }
+
+  /* shared monogram styling */
+  .mark{ display:inline-block; }
+  .mark--xl{ width: 168px; height: 168px; }
+  .mark--lg{ width: 132px; height: 132px; }
+  .mark--md{ width: 88px;  height: 88px; }
+  .mark--sm{ width: 44px;  height: 44px; }
+
+  /* lockup */
+  .lockup{
+    display:inline-flex;
+    align-items:center;
+    gap: 18px;
+  }
+  .lockup__word{
+    font-family:var(--serif);
+    font-weight:400;
+    font-size: 64px;
+    line-height:.9;
+    letter-spacing:.005em;
+    color:var(--ink);
+  }
+  .lockup__word em{ font-style:italic; color:var(--rust); }
+  .lockup--dark .lockup__word{ color:#f3ead3; }
+  .lockup--dark .lockup__word em{ color:var(--rust-light); }
+
+  .lockup--stack{
+    flex-direction:column;
+    align-items:flex-start;
+    gap:14px;
+  }
+  .lockup__tag{
+    font-family:var(--mono);
+    font-size:10px;
+    letter-spacing:.28em;
+    text-transform:uppercase;
+    color:var(--ink-mute);
+    border-top:1px solid var(--rule);
+    padding-top:10px;
+    width:100%;
+  }
+  .lockup--dark .lockup__tag{
+    color:rgba(243,234,211,.45);
+    border-color: rgba(243,234,211,.18);
+  }
+
+  /* small horizontal "type lockup" */
+  .typelock{
+    display:inline-flex; align-items:baseline; gap:14px;
+    font-family:var(--serif);
+  }
+  .typelock__pip{
+    width:9px; height:9px; border-radius:50%;
+    background:var(--rust);
+    transform: translateY(-6px);
+    display:inline-block;
+  }
+  .typelock__word{
+    font-size: 76px;
+    line-height:1;
+    color:var(--ink);
+    letter-spacing:.005em;
+  }
+  .typelock__word em{ font-style:italic; color:var(--rust); }
+  .typelock__rule{
+    align-self:center;
+    width:46px; height:1px;
+    background:var(--ink);
+    opacity:.45;
+  }
+  .typelock__suffix{
+    font-family:var(--mono);
+    font-size:11px;
+    letter-spacing:.22em;
+    text-transform:uppercase;
+    color:var(--ink-mute);
+    transform: translateY(-4px);
+  }
+
+  /* favicon-style chip */
+  .chip{
+    width:64px; height:64px;
+    border-radius:14px;
+    background: var(--ink);
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    box-shadow: var(--shadow-soft);
+  }
+
+  /* spec table */
+  .spec{
+    margin-top: 64px;
+    border:1px solid var(--rule);
+    display:grid;
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .spec__cell{
+    padding: 24px;
+    border-right:1px solid var(--rule);
+  }
+  .spec__cell:last-child{ border-right:0; }
+  .spec__k{
+    font-family:var(--mono);
+    font-size:10px;
+    letter-spacing:.18em;
+    text-transform:uppercase;
+    color:var(--ink-mute);
+    margin-bottom:10px;
+  }
+  .spec__v{
+    font-family:var(--serif);
+    font-size:18px;
+    color:var(--ink);
+  }
+  .spec__swatches{
+    display:flex; gap:8px; margin-top:6px;
+  }
+  .swatch{
+    width:24px; height:24px; border-radius:50%;
+    border:1px solid var(--rule);
+  }
+
+  @media (max-width: 760px){
+    .grid, .grid--3{ grid-template-columns: 1fr; }
+    .card{ border-right:0 !important; }
+    .spec{ grid-template-columns: repeat(2, 1fr); }
+    .spec__cell:nth-child(2n){ border-right:0; }
+    .lockup__word{ font-size:44px; }
+    .typelock__word{ font-size:54px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Reused doc nav -->
+<div class="shell">
+  <nav class="docnav" aria-label="Documents">
+    <a href="for-partners.html" class="docnav__brand" aria-label="Veren">
+      <svg class="mark" viewBox="0 0 200 200" aria-hidden="true">
+        <path d="M30 40 L100 168 L170 40" fill="none" stroke="currentColor" stroke-width="14" stroke-linecap="square" stroke-linejoin="miter"/>
+        <line x1="14" y1="40" x2="186" y2="40" stroke="currentColor" stroke-width="6"/>
+        <circle class="pulse" cx="100" cy="40" r="11" fill="#b14a2c"/>
+      </svg>
+      Ver<em>e</em>n
+    </a>
+    <div class="docnav__links">
+      <a href="for-partners.html">For Agencies</a>
+    </div>
+    <div class="docnav__meta">
+      <span>Brand · Mark Studies</span>
+      <span class="dot">·</span>
+      <span>v0.1</span>
+    </div>
+  </nav>
+</div>
+
+<!-- ============================================================ -->
+<!-- DEFINITIONS — the actual marks live here as <symbol> -->
+<!-- so they can be re-used at any size and on any background.   -->
+<!-- ============================================================ -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+
+    <!-- A. SEAL — italic V inside a thin ring with a horizon baseline & rust pip -->
+    <symbol id="mark-seal" viewBox="0 0 200 200">
+      <!-- ring -->
+      <circle cx="100" cy="100" r="86" fill="none" stroke="currentColor" stroke-width="2"/>
+      <!-- horizon line through the seal (architectural blueprint reference) -->
+      <line x1="14" y1="100" x2="186" y2="100" stroke="currentColor" stroke-width="1" opacity=".18"/>
+      <!-- italic V (Instrument Serif) -->
+      <text x="100" y="132"
+            text-anchor="middle"
+            font-family="Instrument Serif, Georgia, serif"
+            font-style="italic"
+            font-weight="400"
+            font-size="120"
+            fill="currentColor">V</text>
+      <!-- rust pip echoing the docnav -->
+      <circle cx="160" cy="46" r="5.5" fill="#b14a2c"/>
+    </symbol>
+
+    <!-- B. KEYSTONE — pure architectural V with crossbar & terminal serifs -->
+    <symbol id="mark-keystone" viewBox="0 0 200 200">
+      <!-- two diagonal pillars meeting at a point (the V) -->
+      <path d="M30 40 L100 168 L170 40"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="6"
+            stroke-linecap="square"
+            stroke-linejoin="miter"/>
+      <!-- inner thin shadow line — gives weight without bulk -->
+      <path d="M44 40 L100 142 L156 40"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.2"
+            opacity=".35"/>
+      <!-- horizon crossbar (architectural baseline) -->
+      <line x1="20" y1="40" x2="180" y2="40" stroke="currentColor" stroke-width="2"/>
+      <!-- terminal serif dots on the crossbar -->
+      <circle cx="20" cy="40" r="3.5" fill="currentColor"/>
+      <circle cx="180" cy="40" r="3.5" fill="currentColor"/>
+      <!-- rust signature pip -->
+      <circle cx="100" cy="40" r="5" fill="#b14a2c"/>
+    </symbol>
+
+    <!-- C. APERTURE — Instrument Serif italic V cradled by a quarter-arc -->
+    <symbol id="mark-aperture" viewBox="0 0 200 200">
+      <!-- the open arc (a "platform" curve, not a full circle) -->
+      <path d="M22 100 A 78 78 0 0 0 178 100"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"/>
+      <!-- delicate horizon -->
+      <line x1="22" y1="100" x2="178" y2="100" stroke="currentColor" stroke-width="1" opacity=".22"/>
+      <!-- italic serif V sitting on the horizon -->
+      <text x="100" y="92"
+            text-anchor="middle"
+            font-family="Instrument Serif, Georgia, serif"
+            font-style="italic"
+            font-weight="400"
+            font-size="118"
+            fill="currentColor">V</text>
+      <!-- rust pip floating above as a "north star" -->
+      <circle cx="100" cy="22" r="4.5" fill="#b14a2c"/>
+    </symbol>
+
+    <!-- D. MONOGRAM CHIP — square favicon-grade -->
+    <symbol id="mark-chip" viewBox="0 0 64 64">
+      <rect x="0" y="0" width="64" height="64" rx="14" fill="currentColor"/>
+      <text x="32" y="48"
+            text-anchor="middle"
+            font-family="Instrument Serif, Georgia, serif"
+            font-style="italic"
+            font-weight="400"
+            font-size="48"
+            fill="#efe7d4">V</text>
+      <circle cx="50" cy="16" r="3.5" fill="#b14a2c"/>
+    </symbol>
+
+    <!-- E. LIGATURE — V with the italic e tied into the right arm -->
+    <symbol id="mark-ligature" viewBox="0 0 200 200">
+      <text x="100" y="150" text-anchor="middle"
+            font-family="Instrument Serif, Georgia, serif"
+            font-weight="400"
+            font-size="180"
+            fill="currentColor">V<tspan font-style="italic" fill="#b14a2c" dx="-58" dy="6" font-size="120">e</tspan></text>
+    </symbol>
+
+    <!-- F. COMPASS — italic V with cardinal ticks (architectural / blueprint) -->
+    <symbol id="mark-compass" viewBox="0 0 200 200">
+      <line x1="100" y1="14"  x2="100" y2="34"  stroke="currentColor" stroke-width="2"/>
+      <line x1="100" y1="166" x2="100" y2="186" stroke="currentColor" stroke-width="2"/>
+      <line x1="14"  y1="100" x2="34"  y2="100" stroke="currentColor" stroke-width="2"/>
+      <line x1="166" y1="100" x2="186" y2="100" stroke="currentColor" stroke-width="2"/>
+      <text x="100" y="138" text-anchor="middle"
+            font-family="Instrument Serif, Georgia, serif"
+            font-style="italic" font-weight="400"
+            font-size="130" fill="currentColor">V</text>
+      <circle cx="100" cy="14" r="4.5" fill="#b14a2c"/>
+    </symbol>
+
+    <!-- G. CORNERSTONE — square plaque with monogram, est. year, set caps -->
+    <symbol id="mark-cornerstone" viewBox="0 0 200 200">
+      <rect x="12" y="12" width="176" height="176" fill="none" stroke="currentColor" stroke-width="2" rx="4"/>
+      <line x1="28" y1="46" x2="172" y2="46" stroke="currentColor" stroke-width="1" opacity=".4"/>
+      <text x="100" y="36" text-anchor="middle"
+            font-family="JetBrains Mono, ui-monospace, monospace"
+            font-size="11" letter-spacing="2.2"
+            fill="currentColor">VEREN</text>
+      <text x="100" y="135" text-anchor="middle"
+            font-family="Instrument Serif, Georgia, serif"
+            font-style="italic" font-weight="400"
+            font-size="100" fill="currentColor">V</text>
+      <line x1="28" y1="155" x2="172" y2="155" stroke="currentColor" stroke-width="1" opacity=".4"/>
+      <text x="100" y="173" text-anchor="middle"
+            font-family="JetBrains Mono, ui-monospace, monospace"
+            font-size="9" letter-spacing="1.8"
+            fill="currentColor">EST · MMXXIV</text>
+      <circle cx="174" cy="22" r="3.5" fill="#b14a2c"/>
+    </symbol>
+
+    <!-- H. ENGRAVED — outline-only italic V inside a thin frame -->
+    <symbol id="mark-engraved" viewBox="0 0 200 200">
+      <rect x="14" y="14" width="172" height="172" fill="none" stroke="currentColor" stroke-width="1" opacity=".55"/>
+      <line x1="14" y1="40" x2="186" y2="40" stroke="currentColor" stroke-width="1" opacity=".25"/>
+      <line x1="14" y1="160" x2="186" y2="160" stroke="currentColor" stroke-width="1" opacity=".25"/>
+      <text x="100" y="148" text-anchor="middle"
+            font-family="Instrument Serif, Georgia, serif"
+            font-style="italic" font-weight="400"
+            font-size="160" fill="none"
+            stroke="currentColor" stroke-width="1.4">V</text>
+      <circle cx="100" cy="178" r="3" fill="#b14a2c"/>
+    </symbol>
+
+    <!-- I. CRESCENT — italic V cradled by an arch / sun -->
+    <symbol id="mark-crescent" viewBox="0 0 200 200">
+      <path d="M30 70 A 70 38 0 0 1 170 70" fill="none" stroke="currentColor" stroke-width="2"/>
+      <text x="100" y="170" text-anchor="middle"
+            font-family="Instrument Serif, Georgia, serif"
+            font-style="italic" font-weight="400"
+            font-size="140" fill="currentColor">V</text>
+      <circle cx="100" cy="48" r="5" fill="#b14a2c"/>
+    </symbol>
+
+    <!-- J. CAPITAL BAR — italic V crowned by a long horizontal bar (column capital) -->
+    <symbol id="mark-bar" viewBox="0 0 200 200">
+      <line x1="14" y1="52" x2="186" y2="52" stroke="currentColor" stroke-width="3"/>
+      <line x1="14" y1="52" x2="14" y2="62" stroke="currentColor" stroke-width="3"/>
+      <line x1="186" y1="52" x2="186" y2="62" stroke="currentColor" stroke-width="3"/>
+      <text x="100" y="172" text-anchor="middle"
+            font-family="Instrument Serif, Georgia, serif"
+            font-style="italic" font-weight="400"
+            font-size="140" fill="currentColor">V</text>
+      <circle cx="100" cy="52" r="5" fill="#b14a2c"/>
+    </symbol>
+
+  </defs>
+</svg>
+
+<main class="shell lab">
+
+  <p class="hero__eyebrow" style="margin-bottom:18px">
+    <span class="pill" style="border:1px solid var(--rule); padding:4px 10px; color:var(--rust); font-family:var(--mono); font-size:11px; letter-spacing:.18em; text-transform:uppercase;">Brand · 2026</span>
+    <span>Mark Studies</span>
+  </p>
+
+  <h1 class="lab__title">A logo for <em>Veren</em>.</h1>
+  <p class="lab__lede">Four directions, one identity. Each mark stays inside the editorial system &mdash; cream paper, deep ink, rust accent, Instrument Serif &mdash; and treats the italic <em style="color:var(--rust)">e</em> in the wordmark as the brand's tell.</p>
+
+  <!-- ============================================================ -->
+  <!-- 01 — PRIMARY LOCKUP -->
+  <!-- ============================================================ -->
+  <p class="eyebrow"><span class="num">01</span><span>Primary lockup</span><span class="rule"></span><span>Recommended</span></p>
+
+  <div class="grid">
+    <div class="card">
+      <div class="card__stage">
+        <div class="lockup">
+          <svg class="mark mark--lg" style="color:var(--ink)"><use href="#mark-seal"/></svg>
+          <span class="lockup__word">Ver<em>e</em>n</span>
+        </div>
+      </div>
+      <div class="card__meta">
+        <div>
+          <div class="card__label">A · Seal lockup</div>
+          <div class="card__name">The Seal.</div>
+          <p class="card__note">Italic serif V inside a thin ring, bisected by a horizon line. The rust pip sits on the ring like a notation mark.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="card card--dark">
+      <div class="card__stage">
+        <div class="lockup lockup--dark">
+          <svg class="mark mark--lg" style="color:#f3ead3"><use href="#mark-seal"/></svg>
+          <span class="lockup__word">Ver<em>e</em>n</span>
+        </div>
+      </div>
+      <div class="card__meta">
+        <div>
+          <div class="card__label">A · On ink</div>
+          <div class="card__name">Inverted.</div>
+          <p class="card__note">For dark surfaces &mdash; deck title slides, footers, hero overlays. The rust pip stays rust.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- 02 — MARK STUDIES -->
+  <!-- ============================================================ -->
+  <p class="eyebrow"><span class="num">02</span><span>Mark studies &mdash; pick a direction</span><span class="rule"></span></p>
+
+  <div class="grid grid--3">
+    <div class="card">
+      <div class="card__stage">
+        <svg class="mark mark--xl" style="color:var(--ink)"><use href="#mark-seal"/></svg>
+      </div>
+      <div class="card__meta">
+        <div>
+          <div class="card__label">Direction A</div>
+          <div class="card__name">Seal.</div>
+          <p class="card__note">Editorial, formal. Reads like a publisher's mark or a foundation's seal.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card__stage">
+        <svg class="mark mark--xl" style="color:var(--ink)"><use href="#mark-keystone"/></svg>
+      </div>
+      <div class="card__meta">
+        <div>
+          <div class="card__label">Direction B</div>
+          <div class="card__name">Keystone.</div>
+          <p class="card__note">Architectural, structural. The V as two pillars meeting under a horizon line. No type inside &mdash; pure mark.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card__stage">
+        <svg class="mark mark--xl" style="color:var(--ink)"><use href="#mark-aperture"/></svg>
+      </div>
+      <div class="card__meta">
+        <div>
+          <div class="card__label">Direction C</div>
+          <div class="card__name">Aperture.</div>
+          <p class="card__note">Lighter, more open. The V sits on a horizon under an arc. Reads as a platform &mdash; "a place built on something."</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- 03 — TYPE-ONLY LOCKUP -->
+  <!-- ============================================================ -->
+  <p class="eyebrow"><span class="num">03</span><span>Type-only lockup</span><span class="rule"></span><span>For headers &amp; documents</span></p>
+
+  <div class="grid">
+    <div class="card" style="grid-column: 1 / -1; border-right:0;">
+      <div class="card__stage" style="padding: 56px 0 64px;">
+        <div class="typelock">
+          <span class="typelock__pip"></span>
+          <span class="typelock__word">Ver<em>e</em>n</span>
+          <span class="typelock__rule"></span>
+          <span class="typelock__suffix">Platform Delivery</span>
+        </div>
+      </div>
+      <div class="card__meta">
+        <div>
+          <div class="card__label">D · Editorial wordmark</div>
+          <div class="card__name">For docnav, letterheads, decks.</div>
+          <p class="card__note">No mark needed. Pip · wordmark · rule · descriptor. Same vocabulary as the existing site nav, just elevated.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- 04 — STACKED + APP ICON -->
+  <!-- ============================================================ -->
+  <p class="eyebrow"><span class="num">04</span><span>Vertical lockup &amp; app icon</span><span class="rule"></span></p>
+
+  <div class="grid grid--3">
+    <div class="card">
+      <div class="card__stage">
+        <div class="lockup lockup--stack">
+          <svg class="mark mark--lg" style="color:var(--ink); align-self:center; margin: 0 auto;"><use href="#mark-seal"/></svg>
+          <span class="lockup__word" style="font-size:42px; align-self:center; margin: 4px auto 0;">Ver<em>e</em>n</span>
+          <span class="lockup__tag" style="text-align:center;">Platform delivery, since 2024</span>
+        </div>
+      </div>
+      <div class="card__meta">
+        <div>
+          <div class="card__label">E · Stacked seal</div>
+          <div class="card__name">For square placements.</div>
+          <p class="card__note">Social avatars, deck title slides, plaque-style footers.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card__stage" style="gap:32px; flex-direction:column;">
+        <span class="chip">
+          <svg class="mark mark--md" style="width:48px;height:48px;color:#efe7d4"><use href="#mark-seal"/></svg>
+        </span>
+        <span class="chip" style="background:var(--rust);">
+          <svg class="mark mark--md" style="width:48px;height:48px;color:#efe7d4"><use href="#mark-seal"/></svg>
+        </span>
+      </div>
+      <div class="card__meta">
+        <div>
+          <div class="card__label">F · App icon</div>
+          <div class="card__name">Favicon &amp; product icon.</div>
+          <p class="card__note">Rounded chip, ink default, rust for emphasis. Pip becomes a status dot.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card__stage" style="gap: 18px; flex-direction:column; align-items:flex-start; padding-left:8px;">
+        <div style="display:flex; align-items:center; gap:14px;">
+          <svg class="mark mark--sm" style="color:var(--ink)"><use href="#mark-seal"/></svg>
+          <span style="font-family:var(--serif); font-size:28px;">Ver<em style="color:var(--rust); font-style:italic;">e</em>n</span>
+        </div>
+        <div style="display:flex; align-items:center; gap:10px;">
+          <svg class="mark" style="width:28px; height:28px; color:var(--ink)"><use href="#mark-seal"/></svg>
+          <span style="font-family:var(--serif); font-size:20px;">Ver<em style="color:var(--rust); font-style:italic;">e</em>n</span>
+        </div>
+        <div style="display:flex; align-items:center; gap:8px;">
+          <svg class="mark" style="width:18px; height:18px; color:var(--ink)"><use href="#mark-seal"/></svg>
+          <span style="font-family:var(--serif); font-size:14px;">Ver<em style="color:var(--rust); font-style:italic;">e</em>n</span>
+        </div>
+      </div>
+      <div class="card__meta">
+        <div>
+          <div class="card__label">G · Scale test</div>
+          <div class="card__name">From masthead to favicon.</div>
+          <p class="card__note">The seal stays legible at 18px and below, because the V is the load-bearing element &mdash; the ring just frames it.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- 05 — FURTHER MARK STUDIES -->
+  <!-- ============================================================ -->
+  <p class="eyebrow"><span class="num">05</span><span>Further mark studies</span><span class="rule"></span><span>Six more directions</span></p>
+
+  <div class="grid grid--3">
+    <div class="card">
+      <div class="card__stage">
+        <svg class="mark mark--xl" style="color:var(--ink)"><use href="#mark-ligature"/></svg>
+      </div>
+      <div class="card__meta">
+        <div>
+          <div class="card__label">H · Ligature</div>
+          <div class="card__name">V&thinsp;e &mdash; tied.</div>
+          <p class="card__note">Capital V with the italic e tucked into the right arm. The brand's tell, made into the mark itself.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card__stage">
+        <svg class="mark mark--xl" style="color:var(--ink)"><use href="#mark-compass"/></svg>
+      </div>
+      <div class="card__meta">
+        <div>
+          <div class="card__label">I · Compass</div>
+          <div class="card__name">Cardinal ticks.</div>
+          <p class="card__note">Italic V floating at the centre of four blueprint ticks. North is rust. Reads as orientation, surveying, &ldquo;true to plan.&rdquo;</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card__stage">
+        <svg class="mark mark--xl" style="color:var(--ink)"><use href="#mark-cornerstone"/></svg>
+      </div>
+      <div class="card__meta">
+        <div>
+          <div class="card__label">J · Cornerstone</div>
+          <div class="card__name">Plaque.</div>
+          <p class="card__note">A square cornerstone with VEREN in caps, the V monogram, and EST&middot;MMXXIV inscribed. Reads like a building plaque.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card__stage">
+        <svg class="mark mark--xl" style="color:var(--ink)"><use href="#mark-engraved"/></svg>
+      </div>
+      <div class="card__meta">
+        <div>
+          <div class="card__label">K · Engraved</div>
+          <div class="card__name">Hairline.</div>
+          <p class="card__note">Outline-only V framed by two thin rules. Quiet, etched. Best on premium surfaces &mdash; deck covers, letterpress, foil.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card__stage">
+        <svg class="mark mark--xl" style="color:var(--ink)"><use href="#mark-crescent"/></svg>
+      </div>
+      <div class="card__meta">
+        <div>
+          <div class="card__label">L · Crescent</div>
+          <div class="card__name">Arch.</div>
+          <p class="card__note">An arch resting above the V, with the rust pip as its keystone. Lighter cousin of the Aperture &mdash; less seal, more horizon.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card__stage">
+        <svg class="mark mark--xl" style="color:var(--ink)"><use href="#mark-bar"/></svg>
+      </div>
+      <div class="card__meta">
+        <div>
+          <div class="card__label">M · Capital bar</div>
+          <div class="card__name">Column.</div>
+          <p class="card__note">A column capital crowning the V. Architectural, classical, structural &mdash; pairs especially well with the Keystone.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- 06 — WORDMARK VARIATIONS -->
+  <!-- ============================================================ -->
+  <p class="eyebrow"><span class="num">06</span><span>Wordmark variations</span><span class="rule"></span><span>Type-only</span></p>
+
+  <div class="grid grid--3">
+    <div class="card">
+      <div class="card__stage">
+        <span style="font-family:var(--serif); font-size:46px; letter-spacing:.18em; line-height:1; color:var(--ink);">
+          V<span style="color:var(--rust); margin:0 .18em;">·</span>E<span style="color:var(--rust); margin:0 .18em;">·</span>R<span style="color:var(--rust); margin:0 .18em;">·</span>E<span style="color:var(--rust); margin:0 .18em;">·</span>N
+        </span>
+      </div>
+      <div class="card__meta">
+        <div>
+          <div class="card__label">N · Letterspaced caps</div>
+          <div class="card__name">Plate setting.</div>
+          <p class="card__note">All-caps with rust pip-stops between letters. For section dividers, page footers, document headers.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card__stage">
+        <span style="font-family:var(--serif); font-style:italic; font-size:96px; line-height:.9; color:var(--ink);">
+          ver<span style="color:var(--rust);">e</span>n
+        </span>
+      </div>
+      <div class="card__meta">
+        <div>
+          <div class="card__label">O · Italic lowercase</div>
+          <div class="card__name">Quieter.</div>
+          <p class="card__note">All lowercase, fully italic. Reads as a signature &mdash; humble, hand-set. Useful for email sign-offs, business cards, footers.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card__stage" style="flex-direction:column; gap:10px; padding: 24px 16px;">
+        <div style="display:flex; align-items:center; gap:12px; width:100%;">
+          <span style="height:1px; flex:1; background:var(--ink); opacity:.4;"></span>
+          <span style="font-family:var(--mono); font-size:10px; letter-spacing:.28em; text-transform:uppercase; color:var(--ink-mute);">A platform</span>
+          <span style="height:1px; flex:1; background:var(--ink); opacity:.4;"></span>
+        </div>
+        <span style="font-family:var(--serif); font-size:62px; line-height:.95; color:var(--ink);">
+          Ver<em style="color:var(--rust); font-style:italic;">e</em>n
+        </span>
+        <div style="display:flex; align-items:center; gap:12px; width:100%;">
+          <span style="height:1px; flex:1; background:var(--ink); opacity:.4;"></span>
+          <span style="font-family:var(--mono); font-size:10px; letter-spacing:.28em; text-transform:uppercase; color:var(--ink-mute);">delivery firm</span>
+          <span style="height:1px; flex:1; background:var(--ink); opacity:.4;"></span>
+        </div>
+      </div>
+      <div class="card__meta">
+        <div>
+          <div class="card__label">P · Editorial plate</div>
+          <div class="card__name">Masthead.</div>
+          <p class="card__note">The wordmark framed by two ruled descriptors. Reads like a journal masthead &mdash; ideal for the homepage hero.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- SPEC -->
+  <!-- ============================================================ -->
+  <div class="spec">
+    <div class="spec__cell">
+      <div class="spec__k">Wordmark</div>
+      <div class="spec__v">Instrument Serif, italic <em style="color:var(--rust)">e</em></div>
+    </div>
+    <div class="spec__cell">
+      <div class="spec__k">Mark</div>
+      <div class="spec__v">Ring · horizon · italic V · rust pip</div>
+    </div>
+    <div class="spec__cell">
+      <div class="spec__k">Min size</div>
+      <div class="spec__v">18&thinsp;px (favicon: 32&thinsp;px)</div>
+    </div>
+    <div class="spec__cell">
+      <div class="spec__k">Palette</div>
+      <div class="spec__v">Paper · Ink · Rust · Green</div>
+      <div class="spec__swatches">
+        <span class="swatch" style="background:#efe7d4"></span>
+        <span class="swatch" style="background:#14110a"></span>
+        <span class="swatch" style="background:#b14a2c"></span>
+        <span class="swatch" style="background:#2a4a3d"></span>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+</body>
+</html>
