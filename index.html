@@ -12,7 +12,7 @@
 
   /* ---- Hero ---- */
   .home-hero{
-    padding: clamp(56px, 9vw, 130px) 0 clamp(48px, 8vw, 110px);
+    padding: clamp(40px, 6vw, 96px) 0 0;
     border-bottom: 1px solid var(--rule);
   }
   .home-hero__eyebrow{
@@ -21,7 +21,8 @@
     letter-spacing: .10em;
     text-transform: uppercase;
     color: var(--ink-mute);
-    margin-bottom: clamp(28px, 3.5vw, 48px);
+    padding-bottom: clamp(18px, 2.5vw, 30px);
+    border-bottom: 1px solid var(--rule);
     display: flex;
     align-items: center;
     gap: 18px;
@@ -32,32 +33,38 @@
     background: var(--rust);
     animation: pulse 2.8s ease-in-out infinite;
   }
+  .home-hero__split{
+    display: grid;
+    grid-template-columns: 1.25fr 1fr;
+    gap: 0;
+    align-items: start;
+  }
+  .home-hero__left{
+    padding: clamp(36px, 5vw, 72px) clamp(36px, 4.5vw, 64px) clamp(48px, 7vw, 96px) 0;
+    border-right: 1px solid var(--rule);
+  }
+  .home-hero__right{
+    padding: clamp(36px, 5vw, 72px) 0 clamp(48px, 7vw, 96px) clamp(36px, 4.5vw, 64px);
+  }
   .home-hero__title{
     font-family: var(--serif);
     font-weight: 400;
-    font-size: clamp(52px, 9.5vw, 148px);
+    font-size: clamp(44px, 7.5vw, 116px);
     line-height: .88;
     letter-spacing: -.025em;
-    margin: 0;
+    margin: 0 0 clamp(22px, 3vw, 40px);
     color: var(--ink);
     max-width: 16ch;
   }
   .home-hero__title em{ font-style: italic; color: var(--rust); }
-  .home-hero__lower{
-    margin-top: clamp(36px, 5vw, 72px);
-    display: grid;
-    grid-template-columns: 1.1fr 1fr;
-    gap: 64px;
-    align-items: end;
-  }
   .home-hero__sub{
     font-family: var(--serif);
     font-style: italic;
-    font-size: clamp(20px, 2.2vw, 28px);
-    line-height: 1.32;
+    font-size: clamp(18px, 1.9vw, 24px);
+    line-height: 1.4;
     color: var(--ink-soft);
     margin: 0;
-    max-width: 36ch;
+    max-width: 38ch;
   }
   .home-hero__sub strong{
     font-style: normal;
@@ -66,11 +73,34 @@
     font-size: .78em;
     font-weight: 600;
   }
+  .home-hero__proof{
+    border: 1px solid var(--rule);
+    margin-bottom: 28px;
+  }
+  .home-hero__proof-item{
+    padding: 20px 24px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .home-hero__proof-item:last-child{ border-bottom: 0; }
+  .home-hero__proof-num{
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: clamp(26px, 2.8vw, 42px);
+    color: var(--rust);
+    line-height: .96;
+    margin-bottom: 6px;
+  }
+  .home-hero__proof-label{
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: .10em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+  }
   .home-hero__routing{
     display: flex;
     flex-direction: column;
-    gap: 12px;
-    align-self: end;
+    gap: 10px;
   }
   .home-hero__routing-label{
     font-family: var(--mono);
@@ -355,7 +385,10 @@
   }
 
   @media (max-width: 980px){
-    .home-hero__lower{ grid-template-columns: 1fr; gap: 32px; }
+    .home-hero__split{ grid-template-columns: 1fr; }
+    .home-hero__left{ border-right: 0; border-bottom: 1px solid var(--rule); padding-right: 0; }
+    .home-hero__right{ padding-left: 0; }
+    .home-hero__title{ font-size: clamp(44px, 13vw, 108px); }
     .proof{ grid-template-columns: 1fr; }
     .proof__cell + .proof__cell{ border-top: 1px solid var(--rule); }
     .pillars{ grid-template-columns: 1fr; }
@@ -368,8 +401,6 @@
     .home-founder{ border-right: 0; border-bottom: 1px solid var(--rule); }
     .home-founder:last-child{ border-bottom: 0; }
     .belief{ padding: 36px 28px; }
-    .home-hero__title{ font-size: clamp(44px, 14vw, 120px); }
-    .home-hero__eyebrow{ justify-content: flex-start; }
   }
   @media (max-width: 640px){
     .home-founder{ grid-template-columns: 1fr; }
@@ -415,24 +446,42 @@
       <span>4–14 Wochen Lieferzeit</span>
     </div>
 
-    <h1 class="home-hero__title reveal">
-      Digital&shy;platt&shy;formen, <em>in Wochen geliefert.</em>
-    </h1>
+    <div class="home-hero__split">
+      <div class="home-hero__left reveal">
+        <h1 class="home-hero__title">
+          Digital&shy;platt&shy;formen, <em>in Wochen geliefert.</em>
+        </h1>
+        <p class="home-hero__sub">
+          Eine kleine DACH-fokussierte Firma, die Sanity-basierte Plattformen für mittelständische Unternehmen baut &mdash; <strong>direkt</strong> und über Partneragenturen, die diese Kunden bereits betreuen.
+        </p>
+      </div>
 
-    <div class="home-hero__lower reveal">
-      <p class="home-hero__sub">
-        Eine kleine DACH-fokussierte Firma, die Sanity-basierte Plattformen für mittelständische Unternehmen baut &mdash; <strong>direkt</strong> und über Partneragenturen, die diese Kunden bereits betreuen.
-      </p>
-      <div class="home-hero__routing">
-        <div class="home-hero__routing-label">Wählen Sie Ihren Weg</div>
-        <a href="for-clients.html" class="cta">
-          Ich brauche eine Plattform
-          <span class="cta__arrow">&rarr;</span>
-        </a>
-        <a href="for-partners.html" class="cta cta--ghost">
-          Ich bin eine Agentur
-          <span class="cta__arrow">&rarr;</span>
-        </a>
+      <div class="home-hero__right reveal">
+        <div class="home-hero__proof">
+          <div class="home-hero__proof-item">
+            <div class="home-hero__proof-num">830k EUR</div>
+            <div class="home-hero__proof-label">Plattform-Umsatz &middot; 6 Monate &middot; 1 Partner</div>
+          </div>
+          <div class="home-hero__proof-item">
+            <div class="home-hero__proof-num">4–14 Wochen</div>
+            <div class="home-hero__proof-label">Lieferzeit von Briefing bis Launch</div>
+          </div>
+          <div class="home-hero__proof-item">
+            <div class="home-hero__proof-num">30–35%</div>
+            <div class="home-hero__proof-label">Agentur-Marge auf Plattform-Umsatz</div>
+          </div>
+        </div>
+        <div class="home-hero__routing">
+          <div class="home-hero__routing-label">Wählen Sie Ihren Weg</div>
+          <a href="for-clients.html" class="cta">
+            Ich brauche eine Plattform
+            <span class="cta__arrow">&rarr;</span>
+          </a>
+          <a href="for-partners.html" class="cta cta--ghost">
+            Ich bin eine Agentur
+            <span class="cta__arrow">&rarr;</span>
+          </a>
+        </div>
       </div>
     </div>
   </header>

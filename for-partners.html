@@ -9,40 +9,80 @@
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Hanken+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="styles/veren.css" />
 <style>
-  .hero{ padding: clamp(40px, 5vw, 80px) 0 0; }
+  .hero{ padding: clamp(36px, 5vw, 72px) 0 0; }
   .hero__eyebrow{
     font-family:var(--mono);
     font-size:12px;
     letter-spacing:.10em;
     text-transform:uppercase;
     color:var(--ink-mute);
-    margin-bottom:18px;
-    display:inline-flex; align-items:center; gap:10px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid var(--rule);
+    display:flex; align-items:center; gap:10px;
+    flex-wrap: wrap;
   }
   .hero__eyebrow .pill{
     border:1px solid var(--rule);
     padding: 4px 10px;
     color:var(--rust);
   }
+  .hero__split{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    align-items: start;
+  }
+  .hero__left{
+    padding: clamp(32px, 4.5vw, 64px) clamp(32px, 4.5vw, 60px) clamp(40px, 6vw, 80px) 0;
+    border-right: 1px solid var(--rule);
+  }
+  .hero__right{
+    padding: clamp(32px, 4.5vw, 64px) 0 clamp(40px, 6vw, 80px) clamp(32px, 4.5vw, 60px);
+  }
   .hero__title{
     font-family:var(--serif);
     font-weight:400;
-    font-size: clamp(32px, 4vw, 56px);
-    line-height: 1.08;
+    font-size: clamp(26px, 3.2vw, 48px);
+    line-height: 1.1;
     letter-spacing:-.012em;
-    margin: 0;
+    margin: 0 0 clamp(18px, 2.5vw, 30px);
     color:var(--ink);
-    max-width: 28ch;
+    max-width: 24ch;
   }
   .hero__title em{ font-style:italic; color:var(--rust); }
   .hero__sub{
-    margin-top: clamp(28px, 3.5vw, 44px);
     font-family:var(--serif);
     font-style:italic;
-    font-size: clamp(18px, 1.9vw, 24px);
-    line-height:1.38;
+    font-size: clamp(16px, 1.7vw, 21px);
+    line-height:1.45;
     color:var(--ink-soft);
-    max-width: 60ch;
+    max-width: 48ch;
+    margin: 0 0 28px;
+  }
+  .hero__panel{ border: 1px solid var(--rule); }
+  .hero__panel-item{ padding: 22px 24px; border-bottom: 1px solid var(--rule); }
+  .hero__panel-item:last-child{ border-bottom: 0; }
+  .hero__panel-label{
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: .10em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    margin-bottom: 6px;
+  }
+  .hero__panel-num{
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: clamp(22px, 2.4vw, 34px);
+    color: var(--rust);
+    line-height: .96;
+    margin-bottom: 8px;
+  }
+  .hero__panel-body{
+    font-size: 15px;
+    color: var(--ink-soft);
+    line-height: 1.55;
+    margin: 0;
   }
 
   /* Big benefit number-callouts */
@@ -465,11 +505,10 @@
     .logo-tile{ border-bottom:1px solid var(--rule-soft); }
     .logo-tile.client:first-of-type{ border-left:0; }
 
-    /* Mobile centering — eyebrow labels + panel internals */
-    .hero{ text-align:center; }
-    .hero__eyebrow{ justify-content:center; flex-wrap:wrap; }
-    .hero__title{ margin-left:auto; margin-right:auto; }
-    .hero__sub{ margin-left:auto; margin-right:auto; }
+    /* Hero split → single column */
+    .hero__split{ grid-template-columns: 1fr; }
+    .hero__left{ border-right: 0; border-bottom: 1px solid var(--rule); padding-right: 0; }
+    .hero__right{ padding-left: 0; }
 
     .benefit{ text-align:center; }
     .benefit p{ margin-left:auto; margin-right:auto; }
@@ -537,9 +576,33 @@
       <span>Strategie, Demand-Gen, Content, RevOps</span>
     </div>
 
-    <h1 class="hero__title reveal">Ihre Kunden brauchen mehr, als ihre aktuelle Plattform liefern kann. <em>Wir bauen es. Sie behalten die Kundenbeziehung.</em></h1>
+    <div class="hero__split">
+      <div class="hero__left reveal">
+        <h1 class="hero__title">Ihre Kunden brauchen mehr, als ihre aktuelle Plattform liefern kann. <em>Wir bauen es. Sie behalten die Kundenbeziehung.</em></h1>
+        <p class="hero__sub">Veren ist der Plattform-Lieferpartner für Agenturen, deren Kunden bessere digitale Plattformen wünschen &mdash; ohne dass Sie ein eigenes Delivery-Team aufbauen müssen.</p>
+        <a href="#conversation" class="cta">Gespräch starten <span class="cta__arrow">&rarr;</span></a>
+      </div>
 
-    <p class="hero__sub reveal">Veren ist der Plattform-Lieferpartner für Agenturen, deren Kunden bessere digitale Plattformen wünschen &mdash; ohne dass Sie ein eigenes Delivery-Team aufbauen müssen.</p>
+      <div class="hero__right reveal">
+        <div class="hero__panel">
+          <div class="hero__panel-item">
+            <div class="hero__panel-label">Schon beim Pitch</div>
+            <div class="hero__panel-num">Kostenlos einsteigen</div>
+            <p class="hero__panel-body">Wir helfen bei Pitch-Vorbereitung, Konzepten und Präsentationen &mdash; ohne Stundenzettel, ohne Verpflichtung.</p>
+          </div>
+          <div class="hero__panel-item">
+            <div class="hero__panel-label">Ihre Marge</div>
+            <div class="hero__panel-num">Bis zu 35%</div>
+            <p class="hero__panel-body">Bei Deals über 50.000 EUR. Transparent gestaffelt, schriftlich dokumentiert.</p>
+          </div>
+          <div class="hero__panel-item">
+            <div class="hero__panel-label">Kundenbeziehung</div>
+            <div class="hero__panel-num">Bleibt bei Ihnen</div>
+            <p class="hero__panel-body">Wir treten als Teil Ihres Teams auf. Der Endkunde merkt keinen Unterschied.</p>
+          </div>
+        </div>
+      </div>
+    </div>
   </header>
 
 

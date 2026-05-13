@@ -9,40 +9,80 @@
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Hanken+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="styles/veren.css" />
 <style>
-  .hero{ padding: clamp(40px, 5vw, 80px) 0 0; }
+  .hero{ padding: clamp(36px, 5vw, 72px) 0 0; }
   .hero__eyebrow{
     font-family: var(--mono);
     font-size: 12px;
     letter-spacing: .10em;
     text-transform: uppercase;
     color: var(--ink-mute);
-    margin-bottom: 18px;
-    display: inline-flex; align-items: center; gap: 10px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid var(--rule);
+    display: flex; align-items: center; gap: 10px;
+    flex-wrap: wrap;
   }
   .hero__eyebrow .pill{
     border: 1px solid var(--rule);
     padding: 4px 10px;
     color: var(--rust);
   }
+  .hero__split{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    align-items: start;
+  }
+  .hero__left{
+    padding: clamp(32px, 4.5vw, 64px) clamp(32px, 4.5vw, 60px) clamp(40px, 6vw, 80px) 0;
+    border-right: 1px solid var(--rule);
+  }
+  .hero__right{
+    padding: clamp(32px, 4.5vw, 64px) 0 clamp(40px, 6vw, 80px) clamp(32px, 4.5vw, 60px);
+  }
   .hero__title{
     font-family: var(--serif);
     font-weight: 400;
-    font-size: clamp(32px, 4vw, 56px);
-    line-height: 1.08;
+    font-size: clamp(26px, 3.2vw, 48px);
+    line-height: 1.1;
     letter-spacing: -.012em;
-    margin: 0;
+    margin: 0 0 clamp(18px, 2.5vw, 30px);
     color: var(--ink);
-    max-width: 28ch;
+    max-width: 24ch;
   }
   .hero__title em{ font-style: italic; color: var(--rust); }
   .hero__sub{
-    margin-top: clamp(28px, 3.5vw, 44px);
     font-family: var(--serif);
     font-style: italic;
-    font-size: clamp(18px, 1.9vw, 24px);
-    line-height: 1.38;
+    font-size: clamp(16px, 1.7vw, 21px);
+    line-height: 1.45;
     color: var(--ink-soft);
-    max-width: 60ch;
+    max-width: 48ch;
+    margin: 0 0 28px;
+  }
+  .hero__panel{ border: 1px solid var(--rule); }
+  .hero__panel-item{ padding: 22px 24px; border-bottom: 1px solid var(--rule); }
+  .hero__panel-item:last-child{ border-bottom: 0; }
+  .hero__panel-label{
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: .10em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    margin-bottom: 6px;
+  }
+  .hero__panel-num{
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: clamp(22px, 2.4vw, 34px);
+    color: var(--rust);
+    line-height: .96;
+    margin-bottom: 8px;
+  }
+  .hero__panel-body{
+    font-size: 15px;
+    color: var(--ink-soft);
+    line-height: 1.55;
+    margin: 0;
   }
 
   /* Differentiators */
@@ -209,10 +249,9 @@
   }
 
   @media (max-width: 980px){
-    .hero{ text-align: center; }
-    .hero__eyebrow{ justify-content: center; }
-    .hero__title{ margin-left: auto; margin-right: auto; }
-    .hero__sub{ margin-left: auto; margin-right: auto; }
+    .hero__split{ grid-template-columns: 1fr; }
+    .hero__left{ border-right: 0; border-bottom: 1px solid var(--rule); padding-right: 0; }
+    .hero__right{ padding-left: 0; }
     .diffs{ grid-template-columns: 1fr; }
     .diff{ border-right: 0 !important; }
     .deliverables{ grid-template-columns: 1fr; }
@@ -257,9 +296,33 @@
       <span>Mittelstand &middot; DACH &middot; 5–150 Mio. EUR Umsatz</span>
     </div>
 
-    <h1 class="hero__title reveal">Sie wollen eine Plattform, die funktioniert. <em>Nicht einen Anbieter, von dem Sie abhängig bleiben.</em></h1>
+    <div class="hero__split">
+      <div class="hero__left reveal">
+        <h1 class="hero__title">Sie wollen eine Plattform, die funktioniert. <em>Nicht einen Anbieter, von dem Sie abhängig bleiben.</em></h1>
+        <p class="hero__sub">Veren liefert Sanity-basierte digitale Plattformen für mittelständische Unternehmen in DACH &mdash; mit schriftlichem Commitment auf Scope, Timeline und Qualität.</p>
+        <a href="mailto:merdan@veren.io" class="cta">Gespräch anfragen <span class="cta__arrow">&rarr;</span></a>
+      </div>
 
-    <p class="hero__sub reveal">Veren liefert Sanity-basierte digitale Plattformen für mittelständische Unternehmen in DACH &mdash; mit schriftlichem Commitment auf Scope, Timeline und Qualität, und echter Übergabe an Ihr Team.</p>
+      <div class="hero__right reveal">
+        <div class="hero__panel">
+          <div class="hero__panel-item">
+            <div class="hero__panel-label">Lieferzeit</div>
+            <div class="hero__panel-num">4–14 Wochen</div>
+            <p class="hero__panel-body">Von Briefing bis Launch. Schriftlich fixiert, bevor das Projekt beginnt.</p>
+          </div>
+          <div class="hero__panel-item">
+            <div class="hero__panel-label">Kein Vendor-Lock-in</div>
+            <div class="hero__panel-num">Echte Übergabe</div>
+            <p class="hero__panel-body">Ihr Team pflegt die Plattform selbst. Kein Retainer nötig, um ein Hero-Bild zu ändern.</p>
+          </div>
+          <div class="hero__panel-item">
+            <div class="hero__panel-label">Preismodell</div>
+            <div class="hero__panel-num">Scope, nicht Stunden</div>
+            <p class="hero__panel-body">Fixpreis auf Ergebnis. Wenn wir schneller sind, ist das unsere Marge &mdash; nicht Ihre Kostenstelle.</p>
+          </div>
+        </div>
+      </div>
+    </div>
   </header>
 
 
