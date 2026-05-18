@@ -1519,12 +1519,13 @@ footer.colophon{
 .contact-card__value{
   font-family:'Manrope',ui-sans-serif,sans-serif;
   font-weight:500;
-  font-size:clamp(19px,2.2vw,28px);
-  line-height:1.2;
-  letter-spacing:-.010em;
+  font-size:clamp(15px,1.5vw,20px);
+  line-height:1.3;
+  letter-spacing:-.008em;
   color:#f0e8d6;
   flex:1;
-  word-break:break-all;
+  overflow-wrap:break-word;
+  word-break:break-word;
 }
 .contact-card__action{
   font-family:'JetBrains Mono',ui-monospace,'SF Mono',Menlo,monospace;
