@@ -1418,7 +1418,7 @@ footer.colophon{
   .colophon__mark{ text-align:center; }
   .colophon__meta{ justify-content:center; text-align:center; }
   .ornament{ text-align:center; }
-  .faq summary{ grid-template-columns: 1fr auto; gap:14px; text-align:left; }
+  .faq summary{ grid-template-columns: auto 1fr auto; gap:10px; text-align:left; }
 }
 
 @media (max-width: 640px){

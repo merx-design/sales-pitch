@@ -527,6 +527,15 @@
     .team__member{ text-align:center; }
 
     .logo-wall__head > div{ text-align:center; }
+
+    /* Section 02 – Portfolio callout two-column → single */
+    .pit-ref{ grid-template-columns: 1fr !important; }
+    .pit-ref > div:first-child{ border-right:0 !important; border-bottom:1px solid var(--rule); }
+
+    /* Section 07 – Gespräch two-column → stacked */
+    .convo-grid{ grid-template-columns: 1fr !important; }
+    .convo-left{ padding-right:0 !important; border-right:0 !important; border-bottom:1px solid var(--rule); padding-bottom:clamp(24px,4vw,40px); }
+    .convo-right{ padding-left:0 !important; padding-top:clamp(24px,4vw,40px); }
   }
   @media (max-width: 640px){
     .team{ grid-template-columns: 1fr 1fr; }
@@ -723,7 +732,7 @@
           </ul>
         </div>
 
-        <div class="reveal" style="margin-top:32px; border:1px solid var(--rule); display:grid; grid-template-columns: 1fr 1fr; gap:0;">
+        <div class="reveal pit-ref" style="margin-top:32px; border:1px solid var(--rule); display:grid; grid-template-columns: 1fr 1fr; gap:0;">
           <div style="padding:32px 36px 36px; border-right:1px solid var(--rule);">
             <div style="font-family:var(--mono); font-size:11px; letter-spacing:.10em; text-transform:uppercase; color:var(--rust); margin-bottom:12px;">Portfolio &amp; Referenzen</div>
             <h4 style="font-family:var(--serif); font-weight:600; font-size:clamp(20px,2vw,28px); margin:0 0 0; line-height:1.2; color:var(--ink);">Echte Projekte überzeugen. Versprechen nicht.</h4>
@@ -956,9 +965,9 @@
 
     <div class="chap__body">
       <div class="margin-label"><span class="swatch"></span>Gespräch</div>
-      <div class="wide" style="display:grid; grid-template-columns: 1fr 1fr; gap: 0; align-items: start;">
+      <div class="wide convo-grid" style="display:grid; grid-template-columns: 1fr 1fr; gap: 0; align-items: start;">
 
-        <div style="padding-right: clamp(32px, 4vw, 64px); border-right: 1px solid var(--rule);">
+        <div class="convo-left" style="padding-right: clamp(32px, 4vw, 64px); border-right: 1px solid var(--rule);">
           <p style="font-size:17px; color:var(--ink-soft); line-height:1.65; margin:0 0 20px;">Ein erstes Gespräch dauert 30 Minuten. Wir klären gegenseitige Passung &mdash; kein Verkaufsgespräch, keine Verpflichtung.</p>
           <ul style="list-style:none; padding:0; margin:0 0 28px;">
             <li style="padding:10px 0 10px 22px; border-top:1px solid var(--rule-soft); position:relative;"><span style="position:absolute;left:0;top:18px;width:10px;height:1.5px;background:var(--rust);display:block;"></span>Ihr Kundenstamm und wo Plattformgespräche auftauchen</li>
@@ -969,7 +978,7 @@
           <a href="mailto:merdan@veren.io" class="cta">Gespräch vereinbaren <span class="cta__arrow">&rarr;</span></a>
         </div>
 
-        <div style="padding-left: clamp(32px, 4vw, 64px);">
+        <div class="convo-right" style="padding-left: clamp(32px, 4vw, 64px);">
           <div class="faq reveal">
             <details>
               <summary>
