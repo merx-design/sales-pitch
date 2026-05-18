@@ -1424,3 +1424,93 @@ footer.colophon{
   .clocks{ grid-template-columns: 1fr; }
   .docnav__links{ font-size:10px; gap:14px; }
 }
+
+/* ---------- Nav CTA button ---------- */
+.docnav__cta{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:8px 16px;
+  font-family:var(--mono);
+  font-size:11px;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:var(--paper);
+  background:var(--ink);
+  border:1px solid var(--ink);
+  text-decoration:none;
+  white-space:nowrap;
+  transition:background .22s ease, border-color .22s ease;
+  flex-shrink:0;
+}
+.docnav__cta:hover{
+  background:var(--rust);
+  border-color:var(--rust);
+}
+@media (max-width:640px){
+  .docnav__cta{ font-size:10px; padding:7px 12px; }
+}
+
+/* ---------- Contact strip ---------- */
+.contact-strip{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  border-top:1px solid var(--rule);
+  border-bottom:1px solid var(--rule);
+}
+.contact-option{
+  padding:clamp(36px,5vw,64px) clamp(24px,3.5vw,48px);
+  border-right:1px solid var(--rule);
+  text-decoration:none;
+  color:var(--ink);
+  display:flex;
+  flex-direction:column;
+  gap:14px;
+  position:relative;
+  transition:background .25s ease;
+}
+.contact-option:last-child{ border-right:0; }
+.contact-option:hover{ background:rgba(177,74,44,.03); }
+.contact-option::before{
+  content:"";
+  position:absolute;
+  top:0;left:0;right:0;
+  height:2px;
+  background:transparent;
+  transition:background .25s ease;
+}
+.contact-option:hover::before{ background:var(--rust); }
+.contact-option__type{
+  font-family:var(--mono);
+  font-size:11px;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:var(--ink-mute);
+}
+.contact-option__value{
+  font-family:var(--serif);
+  font-weight:500;
+  font-size:clamp(18px,2vw,26px);
+  line-height:1.2;
+  letter-spacing:-.010em;
+  color:var(--ink);
+  flex:1;
+}
+.contact-option__action{
+  font-family:var(--mono);
+  font-size:11px;
+  letter-spacing:.10em;
+  text-transform:uppercase;
+  color:var(--rust);
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  transition:gap .2s ease;
+}
+.contact-option:hover .contact-option__action{ gap:14px; }
+
+@media(max-width:768px){
+  .contact-strip{ grid-template-columns:1fr; }
+  .contact-option{ border-right:0; border-bottom:1px solid var(--rule); }
+  .contact-option:last-child{ border-bottom:0; }
+}

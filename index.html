@@ -156,6 +156,7 @@
       <span class="dot">·</span>
       <span>DACH &middot; International</span>
     </div>
+    <a href="#contact" class="docnav__cta">Kontakt <span aria-hidden="true">&rarr;</span></a>
   </nav>
 
   <header class="home-hero reveal">
@@ -192,6 +193,26 @@
     </a>
   </div>
 
+  <section id="contact" class="reveal">
+    <div class="contact-strip">
+      <a href="mailto:merdan@veren.technology" class="contact-option">
+        <div class="contact-option__type">E-Mail</div>
+        <div class="contact-option__value">merdan@veren.technology</div>
+        <span class="contact-option__action">Schreiben &rarr;</span>
+      </a>
+      <a href="tel:+491772691868" class="contact-option">
+        <div class="contact-option__type">Telefon</div>
+        <div class="contact-option__value">+49 177 2691868</div>
+        <span class="contact-option__action">Anrufen &rarr;</span>
+      </a>
+      <a href="#" class="contact-option" id="cal-popup-trigger">
+        <div class="contact-option__type">Termin</div>
+        <div class="contact-option__value">30 Min. kostenfrei</div>
+        <span class="contact-option__action">Termin buchen &rarr;</span>
+      </a>
+    </div>
+  </section>
+
   <footer class="colophon">
     <div class="colophon__mark">Ver<em>e</em>n</div>
     <div class="colophon__meta">
@@ -203,6 +224,15 @@
 
 </div>
 
+<script>
+  (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
+  Cal("init", "30min", {origin:"https://app.cal.com"});
+  Cal.ns["30min"]("ui", {"hideEventTypeDetails":false,"layout":"month_view"});
+  document.getElementById('cal-popup-trigger').addEventListener('click', function(e){
+    e.preventDefault();
+    Cal.ns["30min"]("modal", { calLink: "merdan-ozdogan-rk7asm/30min" });
+  });
+</script>
 <script>
   const io = new IntersectionObserver((entries) => {
     for (const e of entries){
