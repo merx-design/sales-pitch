@@ -1452,6 +1452,26 @@ footer.colophon{
   .docnav__cta{ font-size:10px; padding:7px 12px; }
 }
 
+/* ---------- Language switcher ---------- */
+.lang-switch{
+  display:flex;
+  align-items:center;
+  gap:6px;
+  font-family:'JetBrains Mono',ui-monospace,monospace;
+  font-size:11px;
+  letter-spacing:.10em;
+  text-transform:uppercase;
+  flex-shrink:0;
+}
+.lang-switch a{
+  color:var(--ink-mute);
+  text-decoration:none;
+  transition:color .2s ease;
+}
+.lang-switch a:hover{ color:var(--ink); }
+.lang-switch a.is-active{ color:var(--rust); }
+.lang-switch__sep{ color:var(--rule); }
+
 /* ---------- Contact band (dark, full-width, outside shell) ---------- */
 .contact-band{
   background:#110e08;
