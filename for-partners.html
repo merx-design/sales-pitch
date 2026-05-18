@@ -541,6 +541,9 @@
     .team{ grid-template-columns: 1fr 1fr; }
     .logo-wall__row{ grid-template-columns: repeat(2, 1fr); }
   }
+  @media (max-width: 640px){
+    .proof-divider{ border-left:0 !important; padding-left:0 !important; border-top:1px solid var(--rule); padding-top:clamp(20px,3vw,32px); margin-top:4px; }
+  }
 </style>
 </head>
 <body>
@@ -607,6 +610,15 @@
     </div>
   </header>
 
+
+  <!-- Proof strip -->
+  <div class="reveal" style="border-top:1px solid var(--rule); border-bottom:1px solid var(--rule); display:flex; align-items:center; gap:clamp(24px,5vw,80px); padding:clamp(28px,4vw,48px) 0; flex-wrap:wrap;">
+    <div style="flex-shrink:0;">
+      <div style="font-family:var(--mono); font-size:11px; letter-spacing:.12em; text-transform:uppercase; color:var(--ink-mute); margin-bottom:10px;">Partnerumsatz 2025</div>
+      <div style="font-family:var(--serif); font-weight:600; font-size:clamp(36px,4.5vw,60px); line-height:1; letter-spacing:-.02em; color:var(--ink);">850.000 <em style="color:var(--rust);">€</em></div>
+    </div>
+    <div class="proof-divider" style="font-size:17px; color:var(--ink-soft); line-height:1.6; max-width:52ch; border-left:1px solid var(--rule); padding-left:clamp(24px,5vw,80px);">Generiert für eine unserer Partneragenturen — allein in diesem Jahr. Kein Retainer, kein Risiko, keine eingestellten Entwickler. Nur Projekte, die über dieses Modell gewonnen wurden.</div>
+  </div>
 
   <!-- 01 - Warum das funktioniert -->
   <section class="chap" id="why">
