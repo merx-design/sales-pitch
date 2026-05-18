@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Impressum — Veren</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
+<link rel="icon" type="image/svg+xml" href="favicon.svg" />
+<link rel="stylesheet" href="styles/veren.css" />
+<style>
+  .imprint-hero{
+    padding: clamp(36px, 5vw, 72px) 0 clamp(32px, 4vw, 56px);
+    border-bottom: 1px solid var(--rule);
+  }
+  .imprint-hero__label{
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    margin-bottom: 20px;
+  }
+  .imprint-hero__title{
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: clamp(32px, 4vw, 56px);
+    line-height: 1.08;
+    letter-spacing: -.014em;
+    margin: 0;
+    color: var(--ink);
+  }
+
+  .imprint-body{
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  .imprint-body__nav{
+    border-right: 1px solid var(--rule);
+    padding: clamp(32px, 4vw, 56px) clamp(24px, 3vw, 40px) clamp(32px, 4vw, 56px) 0;
+  }
+  .imprint-body__nav a{
+    display: block;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: .10em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    text-decoration: none;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--rule-soft);
+    transition: color .2s ease;
+  }
+  .imprint-body__nav a:last-child{ border-bottom: 0; }
+  .imprint-body__nav a:hover{ color: var(--rust); }
+
+  .imprint-content{
+    padding: clamp(32px, 4vw, 56px) 0 clamp(40px, 6vw, 88px) clamp(32px, 4vw, 56px);
+  }
+
+  .imprint-section{
+    margin-bottom: clamp(40px, 5vw, 64px);
+    padding-bottom: clamp(40px, 5vw, 64px);
+    border-bottom: 1px solid var(--rule-soft);
+  }
+  .imprint-section:last-child{
+    border-bottom: 0;
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+  .imprint-section__label{
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--rust);
+    margin-bottom: 16px;
+  }
+  .imprint-section h2{
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: clamp(20px, 2vw, 28px);
+    line-height: 1.15;
+    letter-spacing: -.010em;
+    margin: 0 0 20px;
+    color: var(--ink);
+  }
+  .imprint-section p,
+  .imprint-section address{
+    font-size: 17px;
+    line-height: 1.65;
+    color: var(--ink-soft);
+    font-style: normal;
+    margin: 0 0 10px;
+    max-width: 56ch;
+  }
+  .imprint-section p:last-child,
+  .imprint-section address:last-child{ margin-bottom: 0; }
+  .imprint-section a{
+    color: var(--ink);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    transition: color .2s ease;
+  }
+  .imprint-section a:hover{ color: var(--rust); }
+
+  @media (max-width: 768px){
+    .imprint-body{ grid-template-columns: 1fr; }
+    .imprint-body__nav{
+      border-right: 0;
+      border-bottom: 1px solid var(--rule);
+      padding: clamp(24px, 3vw, 40px) 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0 24px;
+    }
+    .imprint-body__nav a{ border-bottom: 0; }
+    .imprint-content{ padding-left: 0; }
+  }
+</style>
+</head>
+<body>
+
+<div class="progress" aria-hidden="true"><div class="progress__bar" id="bar"></div></div>
+
+<div class="shell">
+
+  <nav class="docnav">
+    <a href="index.html" class="docnav__brand" aria-label="Veren">
+      <svg class="mark" viewBox="0 0 200 200" aria-hidden="true">
+        <path d="M30 40 L100 168 L170 40" fill="none" stroke="currentColor" stroke-width="14" stroke-linecap="square" stroke-linejoin="miter"/>
+        <line x1="14" y1="40" x2="186" y2="40" stroke="currentColor" stroke-width="6"/>
+        <circle class="pulse" cx="100" cy="40" r="11" fill="#e04818"/>
+      </svg>
+      Ver<em>e</em>n
+    </a>
+    <div class="docnav__links">
+      <a href="index.html">Start</a>
+      <a href="for-partners.html">Für Partner</a>
+      <a href="for-clients.html">Für Kunden</a>
+    </div>
+    <div class="docnav__meta">
+      <span>Plattform-Delivery Studio</span>
+      <span class="dot">·</span>
+      <span>DACH &middot; International</span>
+    </div>
+  </nav>
+
+  <div class="imprint-hero reveal">
+    <div class="imprint-hero__label">Rechtliche Angaben</div>
+    <h1 class="imprint-hero__title">Impressum</h1>
+  </div>
+
+  <div class="imprint-body">
+    <aside class="imprint-body__nav reveal">
+      <a href="#angaben">Angaben</a>
+      <a href="#kontakt">Kontakt</a>
+      <a href="#haftung">Haftung</a>
+      <a href="#urheberrecht">Urheberrecht</a>
+    </aside>
+
+    <div class="imprint-content">
+
+      <div class="imprint-section reveal" id="angaben">
+        <div class="imprint-section__label">01 — Anbieter</div>
+        <h2>Angaben gemäß § 5 TMG</h2>
+        <address>
+          Merdan Özdogan Ltd.<br>
+          Nikou-Christodoulou 5<br>
+          Zypern
+        </address>
+      </div>
+
+      <div class="imprint-section reveal" id="kontakt">
+        <div class="imprint-section__label">02 — Kontakt</div>
+        <h2>Kontakt</h2>
+        <p>
+          E-Mail: <a href="mailto:merdan@veren.technology">merdan@veren.technology</a><br>
+          Web: <a href="https://veren.technology">veren.technology</a>
+        </p>
+      </div>
+
+      <div class="imprint-section reveal" id="haftung">
+        <div class="imprint-section__label">03 — Haftung</div>
+        <h2>Haftung für Inhalte</h2>
+        <p>Die Inhalte dieser Seiten wurden mit größter Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte können wir jedoch keine Gewähr übernehmen.</p>
+        <p>Als Diensteanbieter sind wir gemäß § 7 Abs. 1 TMG für eigene Inhalte auf diesen Seiten nach den allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG sind wir als Diensteanbieter jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach Umständen zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen.</p>
+      </div>
+
+      <div class="imprint-section reveal" id="urheberrecht">
+        <div class="imprint-section__label">04 — Urheberrecht</div>
+        <h2>Urheberrecht</h2>
+        <p>Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem deutschen Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers.</p>
+        <p>&copy; <span id="year"></span> Merdan Özdogan Ltd. Alle Rechte vorbehalten.</p>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+  const io = new IntersectionObserver((entries) => {
+    for (const e of entries){
+      if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+    }
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+</body>
+</html>
