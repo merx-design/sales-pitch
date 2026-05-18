@@ -1309,6 +1309,16 @@ footer.colophon{
   letter-spacing:.10em;
   text-transform:uppercase;
 }
+.colophon__link{
+  color:var(--ink-mute);
+  text-decoration:none;
+  border-bottom:1px solid var(--rule);
+  transition:color .2s ease, border-color .2s ease;
+}
+.colophon__link:hover{
+  color:var(--rust);
+  border-color:var(--rust);
+}
 
 /* ---------- Reveal on view ---------- */
 .reveal{
